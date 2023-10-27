@@ -1,0 +1,163 @@
+/* CSS Variables for the palette */
+:root {
+    --jade: #5AA265ff;
+    --jet: #2E302Fff;
+    --ash-gray: #A5AEAFff;
+    --white: #FFFFFFff;
+}
+
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: var(--ash-gray);
+    color: var(--jet);
+    margin: 0 auto;
+}
+
+.header-top {
+    display: flex;
+    background-color: var(--white);
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.logo img {
+    max-height: 50px;
+    margin-right: 20px;
+}
+
+/* Navigation styles */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav li {
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--jet);
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--jade);
+}
+
+/* Header styles */
+header {
+    position: relative;
+    background-color: var(--white);
+    color: var(--jet);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.logo-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.image-container img {
+    max-width: 400px;
+    height: auto;
+}
+
+.text-container {
+    flex: 1;
+    text-align: left;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2em;
+}
+
+/* Section styles */
+section {
+    padding: 40px 20px;
+    background-color: var(--white);
+    margin: 20px;
+    border-radius: 8px;
+}
+
+.project-card, .job-experience, .study-experience, .publication-entry {
+    border: 1px solid var(--jet);
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 8px;
+}
+
+.project-card img {
+    max-width: 100%;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.project-card a, .job-experience a, .study-experience a, .publication-entry a {
+    text-decoration: none;
+    background-color: var(--jade);
+    color: var(--white);
+    padding: 5px 10px;
+    display: inline-block;
+    transition: background-color 0.3s;
+    border-radius: 8px;
+}
+
+.project-card a:hover, .job-experience a:hover, .study-experience a:hover, .publication-entry a:hover {
+    background-color: var(--jet);
+}
+
+/* Footer styles */
+footer {
+    background-color: var(--jet);
+    color: var(--white);
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    nav ul {
+        text-align: left;
+    }
+
+    nav ul li {
+        display: block;
+        margin-bottom: 5px;
+    }
+}

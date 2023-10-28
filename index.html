@@ -70,6 +70,9 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#skills">Services</a>
             </li>
+              <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#timeline">Timeline</a>
+              </li>
             <!--<li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
             </li>
@@ -224,6 +227,65 @@
     </div><!-- end section -->
 
 
+    <style>@import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&display=swap');</style>
+    <!--This is the main container that contains the whole timeline.-->
+    <div id ="timeline" , class="design-section">
+        <h3 class="timeline-title">Working Experience</h3>
+        <div class="timeline">
+
+            <!--Well, The reason for this div is to fill space.
+  This space is technically used for keeping dates,
+  but I didn't find the need for dates. However, I'll provide
+  you the styling for dates, so that you can use it if you
+  wanted to.-->
+            <div class="timeline-empty">
+            </div>
+
+            <!--This is the class where the timeline graphics are
+            housed in. Note that we have timeline-circle
+            here for that pointer in timeline.-->
+
+            <div class="timeline-middle">
+                <div class="timeline-circle"></div>
+            </div>
+
+            <a href="https://myelinh.com/" target="_blank">
+                <div class="timeline-component timeline-content">
+                    <h3>Myelin-H</h3>
+                    <p>Cognitive Game Developer</p>
+                    <p>2022 - current</p>
+                </div>
+            </a>
+
+            <a href="https://www.esolutions.free2move.com/" target="_blank">
+            <div class="timeline-component timeline-content">
+                <h3>Free2Move e-solutions</h3>
+                <p>R&D Intern</p>
+                <p>2021 - 2022</p>
+            </div>
+            </a>
+
+            <div class="timeline-middle">
+                <div class="timeline-circle"></div>
+            </div>
+            <div class="timeline-empty">
+            </div>
+
+            <div class="timeline-empty">
+            </div>
+
+            <div class="timeline-middle">
+                <div class="timeline-circle"></div>
+            </div>
+            <div class=" timeline-component timeline-content">
+                <h3>Solo Game Developer</h3>
+                <p>VR Game Development</p>
+                <p>2017 - 2021</p>
+            </div>
+
+        </div>
+        </div>
+    </div>
 
 <!--	<div id="portfolio" class="section lb">
             <div class="container">
@@ -480,7 +542,7 @@
                     <div class="contact_form">
                         <div id="message"></div>
                         <!-- Updated form tag with Formspree action -->
-                        <form id="contactForm" name="sentMessage" action="https://formspree.io/f/mgejdqad" method="POST" novalidate="novalidate">
+                        <form id="contactForm" name="sentMessage" action="https://formspree.io/f/mgejdqad" method="POST">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -523,20 +585,30 @@
         <div class="container">
             <div class="footer-distributed">
                 <div class="footer-left">
-                    <p class="footer-links">
-                        <a href="#">Home</a>
-                      <!--  <a href="#">Blog</a>
-                        <a href="#">Pricing</a>-->
-                        <a href="#">About</a>
-<!--                        <a href="#">Faq</a>-->
-                        <a href="#">Contact</a>
+                    <div class="social-links">
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/alberto-valdes-rey-b975a71b9/" target="_blank">
+                            <img src="uploads/linkedin.png" alt="LinkedIn">
+                        </a>
+                        <!-- GitHub -->
+                        <a href="https://github.com/Ledsav" target="_blank">
+                            <img src="uploads/github.png" alt="GitHub">
+                        </a>
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/ledsav/" target="_blank">
+                            <img src="uploads/instagram.png" alt="Instagram">
+                        </a>
+                    </div>
+                    <p class="footer-company-name">
+                        All Rights Reserved. &copy; 2018
+                        <a href="#">AVR</a> Design By : <a href="https://html.design/">Alberto Valdes Rey</a>
                     </p>
-                    <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">AVR</a> Design By :
-					<a href="https://html.design/">Alberto Valdes Rey</a></p>
                 </div>
             </div>
         </div><!-- end container -->
     </div><!-- end copyrights -->
+
+
 
     <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
 
@@ -547,9 +619,6 @@
 	<script src="js/jquery.easing.1.3.js"></script> 
 	<script src="js/parallaxie.js"></script>
 	<script src="js/headline.js"></script>
-	<!-- Contact form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
     <!-- ALL PLUGINS -->
     <script src="js/custom.js"></script>
     <script src="js/jquery.vide.js"></script>

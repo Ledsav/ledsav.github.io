@@ -664,9 +664,11 @@ xclip
     position: relative;
     z-index: 2;
     border-radius: 15px;
+    width: 80%;
+    height: 80%;
 }
 
-.right-box-pro::before {
+/*.right-box-pro::before {
     content: "";
     background: #333333;
     width: 100%;
@@ -677,7 +679,7 @@ xclip
     z-index: 0;
     border-radius: 15px;
 
-}
+}*/
 
 .skills-inner-box {
     display: flex; /* Turn the box into a flex container */

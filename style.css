@@ -366,6 +366,10 @@ a img.aligncenter {
     text-align: center;
 }
 
+.main-banner.parallaxie {
+    background: url('uploads/banner.jpg');
+}
+
 .main-banner::after {
     content: " ";
     position: absolute;
@@ -657,7 +661,9 @@ xclip
 
 .right-box-pro {
     position: relative;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .right-box-pro img {

@@ -432,7 +432,7 @@ a img.aligncenter {
     opacity: 1;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 xclip 
 
@@ -1585,6 +1585,8 @@ hr.invis1 {
 
 .gallery-single {
     margin: 30px 15px;;
+    border-radius: 15px;
+    background-color: #333333;
 }
 
 .gallery-single {
@@ -1601,13 +1603,14 @@ hr.invis1 {
     right: 10px;
     bottom: 10px;
     background: rgba(51, 51, 51, 0.80);
-    color: #35424C;
+    color: #ffffff;
     opacity: 0;
     -webkit-transition: all .5s;
     transition: all .5s;
     z-index: 2;
     -webkit-transform: translateY(10px);
     transform: translateY(10px);
+    border-radius: 15px;
 }
 
 .gallery-list .gallery-single:hover .img-overlay {
@@ -1619,6 +1622,22 @@ hr.invis1 {
 .gallery-list .gallery-single:hover .img-overlay .hoverbutton {
     opacity: 1;
     top: 50%;
+}
+
+.gallery-list .img-overlay a {
+    color: #FFFFFF; /* Change to the color you want for the text */
+    margin: 20px; /* Adjust the margin as needed */
+    display: block; /* This makes sure the margin is applied all around the element */
+    text-decoration: none; /* Optional: removes the underline from links */
+    /* Additional styles for better visibility and aesthetics */
+    text-align: center;
+    line-height: 1.5; /* Adjust line height for better readability if needed */
+    font-weight: bold; /* Optional: if you want the text to be bold */
+}
+
+/* Change color on hover */
+.gallery-list .img-overlay a:hover {
+    color: #E6E6E6; /* Lighter color or different color on hover */
 }
 
 

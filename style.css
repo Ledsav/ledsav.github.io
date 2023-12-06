@@ -523,6 +523,7 @@ xclip
     background-color: #f2f3f5;
 }
 
+
 .section.db {
     background-color: #111111;
 }
@@ -674,6 +675,12 @@ xclip
     height: 80%;
 }
 
+.column {
+    display: block;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
 /*.right-box-pro::before {
     content: "";
     background: #333333;
@@ -714,6 +721,17 @@ xclip
 .skills-inner-box h2 {
     font-size: 22px;
     font-weight: 600;
+}
+
+.col {
+    flex: 1; /* Adjust this to control column width */
+    padding-bottom: 1rem; /* Space between items */
+    /* Additional styles as needed */
+}
+
+.tech-icon {
+    margin-right: 10px; /* Spacing between icons */
+    /* Additional styles as needed */
 }
 
 /*------------------------------------------------------------------
@@ -1257,6 +1275,7 @@ xclip
     /* Add any other styles as needed, such as vertical alignment, margins, etc. */
 }
 
+
 .participate-wrap figure {
     overflow: hidden;
     position: relative;
@@ -1582,6 +1601,11 @@ hr.invis1 {
     border-radius: 0px;
 }
 
+@media (max-width: 767px) {
+    .filter-button-group button {
+        width: 100%;
+    }
+}
 
 .gallery-single {
     margin: 30px 15px;;

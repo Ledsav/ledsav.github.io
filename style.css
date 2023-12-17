@@ -1610,6 +1610,10 @@ hr.invis1 {
 .gallery-single {
     margin: 30px 15px;;
     border-radius: 15px;
+    display: flex;
+    align-items: center; /* Centers content vertically */
+    justify-content: center; /* Centers content horizontally */
+    height: 200px;
     background-color: #333333;
 }
 

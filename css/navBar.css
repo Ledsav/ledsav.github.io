@@ -1,0 +1,109 @@
+@import url("variables.css");
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-fixed);
+  transition: all var(--duration-normal) var(--ease-out-cubic);
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  max-width: var(--container-max-width);
+  padding: 0 var(--container-padding);
+}
+
+/* Logo Styles */
+.nav-logo {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  transition: all var(--duration-normal) var(--ease-out-cubic);
+}
+
+.nav-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nav-logo:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+/* Navigation Menu */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-body);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  position: relative;
+  transition: all var(--duration-normal) var(--ease-out-cubic);
+}
+
+.nav-link:hover {
+  color: var(--color-text-muted);
+}
+
+.nav-link.active {
+  color: var(--color-text-primary);
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-text);
+  border-radius: var(--radius-full);
+  transition: all var(--duration-normal) var(--ease-out-cubic);
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+  width: 80%;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-h3);
+  cursor: pointer;
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  transition: all var(--duration-normal) var(--ease-out-cubic);
+}
+
+.mobile-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+/* Scrolled State */
+.navbar.scrolled {
+  background: var(--color-backdrop);
+  backdrop-filter: var(--blur-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-sm) 0;
+}

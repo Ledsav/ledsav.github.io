@@ -1,0 +1,206 @@
+/* =============================================================================
+   CSS CUSTOM PROPERTIES - GRADIENT PULSE DESIGN SYSTEM
+   ============================================================================= */
+
+:root {
+  /* =========================
+     COLOR PALETTE
+     ========================= */
+
+  /* Primary Gradients */
+  --gradient-deep-void: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+  --gradient-plasma-blue: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  --gradient-aurora-teal: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  --gradient-neon-orange: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+  --gradient-violet-mist: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+
+  /* Transitional Gradients */
+  --gradient-warm-glow: linear-gradient(
+    135deg,
+    #fef3c7 0%,
+    #fde68a 50%,
+    #f59e0b 100%
+  );
+  --gradient-cool-flow: linear-gradient(
+    135deg,
+    #dbeafe 0%,
+    #93c5fd 50%,
+    #3b82f6 100%
+  );
+  --gradient-mystic-purple: linear-gradient(
+    135deg,
+    #f3e8ff 0%,
+    #c4b5fd 50%,
+    #8b5cf6 100%
+  );
+  --gradient-ember: linear-gradient(
+    135deg,
+    #fee2e2 0%,
+    #fca5a5 50%,
+    #ef4444 100%
+  );
+
+  /* Animated Gradients */
+  --gradient-hero: linear-gradient(-45deg, #0a0a0f, #1a1a2e, #2563eb, #7c3aed);
+  --gradient-text: linear-gradient(135deg, #3b82f6, #10b981, #f97316);
+  --gradient-glow: radial-gradient(
+    ellipse at center,
+    rgba(59, 130, 246, 0.3) 0%,
+    transparent 70%
+  );
+
+  /* Solid Colors */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-anthracite: #1c1c1c;
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #64748b;
+  --color-backdrop: rgba(23, 24, 27, 0.26);
+  --rich-black: #0c0d14ff;
+  --rich-black-2: #0a0c13ff;
+  --dark-blue: rgb(79, 106, 113);
+  --light-blue: #b0dce7ff;
+  --pacific-cyan: #4da8c9ff;
+  --non-photo-blue: #93cfe0ff;
+
+  /* =========================
+     TYPOGRAPHY
+     ========================= */
+
+  /* Font Families */
+  --font-primary: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: "Merriweather", serif;
+  --font-helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --font-accent: "Clash Display", var(--font-primary);
+
+  /* Font Sizes */
+  --font-size-hero: clamp(2.5rem, 8vw, 4rem);
+  --font-size-h1: clamp(2rem, 6vw, 3rem);
+  --font-size-h2: clamp(1.5rem, 4vw, 2.25rem);
+  --font-size-h3: clamp(1.25rem, 3vw, 1.875rem);
+  --font-size-h4: clamp(1.125rem, 2.5vw, 1.5rem);
+  --font-size-large: 1.125rem;
+  --font-size-body: 1rem;
+  --font-size-small: 0.875rem;
+  --font-size-caption: 0.75rem;
+
+  /* Line Heights */
+  --line-height-tight: 1.1;
+  --line-height-normal: 1.2;
+  --line-height-relaxed: 1.4;
+  --line-height-loose: 1.6;
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* =========================
+     SPACING
+     ========================= */
+
+  --space-xs: 0.25rem; /* 4px */
+  --space-sm: 0.5rem; /* 8px */
+  --space-md: 1rem; /* 16px */
+  --space-lg: 1.5rem; /* 24px */
+  --space-xl: 2rem; /* 32px */
+  --space-2xl: 3rem; /* 48px */
+  --space-3xl: 4rem; /* 64px */
+  --space-4xl: 6rem; /* 96px */
+  --space-5xl: 8rem; /* 128px */
+
+  /* Section Spacing */
+  --section-padding-mobile: var(--space-3xl);
+  --section-padding-desktop: var(--space-4xl);
+
+  /* =========================
+     LAYOUT
+     ========================= */
+
+  /* Grid & Containers */
+  --container-max-width: 1400px;
+  --container-padding: var(--space-lg);
+  --grid-gap: var(--space-lg);
+
+  /* Border Radius */
+  --radius-sm: 0.375rem; /* 6px */
+  --radius-md: 0.5rem; /* 8px */
+  --radius-lg: 0.75rem; /* 12px */
+  --radius-xl: 1rem; /* 16px */
+  --radius-full: 9999px;
+
+  /* =========================
+     SHADOWS & EFFECTS
+     ========================= */
+
+  /* Box Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+  /* Glow Effects */
+  --glow-sm: 0 0 10px rgba(59, 130, 246, 0.3);
+  --glow-md: 0 0 20px rgba(59, 130, 246, 0.4);
+  --glow-lg: 0 0 40px rgba(59, 130, 246, 0.5);
+
+  /* Backdrop Blur */
+  --blur-sm: blur(4px);
+  --blur-md: blur(8px);
+  --blur-lg: blur(16px);
+
+  /* =========================
+     ANIMATIONS
+     ========================= */
+
+  /* Timing Functions */
+  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* Durations */
+  --duration-fast: 200ms;
+  --duration-normal: 300ms;
+  --duration-slow: 600ms;
+
+  /* =========================
+     Z-INDEX LAYERS
+     ========================= */
+
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+}
+
+/* =========================
+   DARK MODE OVERRIDES
+   ========================= */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text-primary: #f1f5f9;
+    --color-text-secondary: #e2e8f0;
+    --color-text-muted: #94a3b8;
+  }
+}
+
+/* =========================
+   REDUCED MOTION
+   ========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+  }
+}

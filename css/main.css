@@ -1,0 +1,49 @@
+@import url("variables.css");
+@import url("navBar.css");
+@import url("hero.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100vh;
+  background-color: var(--rich-black);
+}
+
+body {
+  font-family: var(--font-helvetica);
+  color: var(--color-text-primary);
+  background-image: url("../assets/images/body-bg-v2.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+}
+
+/*scrollbar styles*/
+body::-webkit-scrollbar {
+  width: 12px;
+}
+body::-webkit-scrollbar-track {
+  background: var(--rich-black-2);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--dark-blue);
+  border-radius: 6px;
+  border: 3px solid var(--rich-black-2);
+}
+
+.horizontal-scrollbar {
+  overflow-x: hidden;
+}

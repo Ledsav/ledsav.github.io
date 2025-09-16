@@ -50,3 +50,7 @@ temp
 .env.*.local
 
 # Depending on your project, you might want to ignore other directories/files.
+
+
+#repomix
+repomix-output.

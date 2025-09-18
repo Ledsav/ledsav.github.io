@@ -48,6 +48,7 @@
     rgba(59, 130, 246, 0.3) 0%,
     transparent 70%
   );
+  --accent-gradient: linear-gradient(135deg, #3b82f6, #10b981);
 
   /* Solid Colors */
   --color-white: #ffffff;
@@ -63,6 +64,8 @@
   --light-blue: #b0dce7ff;
   --pacific-cyan: #4da8c9ff;
   --non-photo-blue: #93cfe0ff;
+  --accent-color: #3b82f6;
+  --contrast-color: #f97316;
 
   /* =========================
      TYPOGRAPHY

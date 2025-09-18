@@ -27,11 +27,17 @@
 }
 
 .hero-subtitle {
-  font-size: var(--font-size-lg);
-  color: var(--color-text-secondary);
+  font-size: var(--font-size-h4);
+  min-height: calc(var(--font-size-h4) + var(--space-sm));
+  background: var(--color-text-primary);
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-bold);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
   margin-bottom: var(--space-sm);
-  font-weight: var(--font-weight-normal);
-  text-shadow: 2px 2px 10px rgba(22, 22, 23, 0.396);
+  text-shadow: none;
 }
 
 .hero-description {

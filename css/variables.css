@@ -125,6 +125,7 @@
      ========================= */
 
   /* Grid & Containers */
+  --subsection-max-width: 1200px;
   --container-max-width: 1400px;
   --container-padding: var(--space-lg);
   --grid-gap: var(--space-lg);

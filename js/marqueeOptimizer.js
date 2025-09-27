@@ -27,4 +27,4 @@ function initMarqueeAnimation() {
 document.addEventListener('DOMContentLoaded', () => {
   // Small delay to ensure all styles are loaded
   setTimeout(initMarqueeAnimation, 100);
-my });
+});

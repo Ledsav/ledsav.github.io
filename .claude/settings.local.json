@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:chaseohlson.com)"
+      "WebFetch(domain:chaseohlson.com)",
+      "Bash(python:*)"
     ],
     "deny": [],
     "ask": []

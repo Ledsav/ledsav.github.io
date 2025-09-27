@@ -107,18 +107,7 @@
         </div>
 
         <div class="about-image">
-          <div class="image-wrapper">
-            <img
-              src="assets/images/about/human-3d.png"
-              alt="Alberto Valdes Rey"
-              class="profile-image human"
-            />
-            <img
-              src="assets/images/about/bot-3d.png"
-              alt="Alberto Valdes Rey - Bot Version"
-              class="profile-image bot"
-            />
-          </div>
+          <canvas id="about-3d-canvas"></canvas>
         </div>
 
         <div class="about-details">
@@ -914,6 +903,16 @@
       </div>
     </footer>
 
+    <!-- Modern Three.js ES6 Modules -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
+        }
+      }
+    </script>
+
     <!-- JS Modules -->
     <script src="js/navigation.js"></script>
     <script src="js/mobileMenu.js"></script>
@@ -924,5 +923,6 @@
     <script src="js/scrollImageTransition.js"></script>
     <script src="js/main.js"></script>
     <script src="js/marqueeOptimizer.js"></script>
+    <script type="module" src="js/about3d.js"></script>
   </body>
 </html>

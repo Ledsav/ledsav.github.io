@@ -54,7 +54,7 @@
 
     <!-- About Section -->
     <section id="about" class="about">
-      <div class="about-grid">
+      <div class="about-section">
         <div class="about-header">
           <span class="section-number">01</span>
           <h2 class="section-title">About</h2>
@@ -104,10 +104,6 @@
               makes us more human.
             </p>
           </div>
-        </div>
-
-        <div class="about-image">
-          <canvas id="about-3d-canvas"></canvas>
         </div>
 
         <div class="about-details">
@@ -435,7 +431,7 @@
           <h3 class="subsection-title">Personal Projects</h3>
           <div class="featured-grid">
             <!-- Ciao Fridays -->
-            <div class="featured-project-card primary">
+            <div class="featured-project-card">
               <div class="featured-project-content">
                 <div class="featured-project-image">
                   <img
@@ -479,7 +475,7 @@
             </div>
 
             <!-- PopGlobe -->
-            <div class="featured-project-card secondary">
+            <div class="featured-project-card">
               <div class="featured-project-content reverse">
                 <div class="featured-project-image">
                   <img
@@ -523,7 +519,7 @@
             </div>
 
             <!-- Flow Field -->
-            <div class="featured-project-card tertiary">
+            <div class="featured-project-card">
               <div class="featured-project-content">
                 <div class="featured-project-image">
                   <img
@@ -567,9 +563,55 @@
               </div>
             </div>
 
-            <!-- Spike & Learn -->
-            <div class="featured-project-card quaternary">
+            <!-- Evo Wars -->
+            <div class="featured-project-card">
               <div class="featured-project-content reverse">
+                <div class="featured-project-image">
+                  <img
+                    src="assets/images/projects/evo-wars.png"
+                    alt="Evo Wars Evolution Simulation"
+                  />
+                </div>
+                <div class="featured-project-details">
+                  <div class="project-category">Evolution Simulation</div>
+                  <h4 class="featured-project-title">Evo Wars</h4>
+                  <p class="featured-project-description">
+                    Interactive evolution simulation where organisms evolve
+                    through natural selection, developing unique traits, forming
+                    species, and competing for survival. Watch evolution happen
+                    in real-time with genetic systems, DNA sequences, and family
+                    trees.
+                  </p>
+                  <div class="featured-project-tech">
+                    <span>React</span>
+                    <span>Canvas API</span>
+                    <span>Genetics</span>
+                    <span>AI Simulation</span>
+                  </div>
+                  <a
+                    href="https://www.albertovaldesrey.com/evo-wars"
+                    target="_blank"
+                    class="featured-project-link"
+                  >
+                    <span>Play Demo</span>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M7 17l9.2-9.2M17 17V7H7" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spike & Learn -->
+            <div class="featured-project-card">
+              <div class="featured-project-content">
                 <div class="featured-project-image">
                   <img
                     src="assets/images/projects/volley.png"
@@ -923,6 +965,5 @@
     <script src="js/scrollImageTransition.js"></script>
     <script src="js/main.js"></script>
     <script src="js/marqueeOptimizer.js"></script>
-    <script type="module" src="js/about3d.js"></script>
   </body>
 </html>

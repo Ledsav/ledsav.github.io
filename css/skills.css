@@ -6,10 +6,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-inline: var(--section-padding-mobile) var(--space-md);
-  border-radius: var(--radius-xl);
+  padding: 120px var(--space-md);
   scroll-margin-top: 90px;
   overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.skills::before {
+  display: none;
 }
 
 .skills .container {
@@ -19,40 +23,17 @@
   padding: var(--space-xl) 0;
 }
 
-/* Gradient Skill Items */
-.skill-item.gradient-plasma {
-  background: var(--gradient-plasma-blue);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-}
-
-.skill-item.gradient-aurora {
-  background: var(--gradient-aurora-teal);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-}
-
-.skill-item.gradient-violet {
-  background: var(--gradient-violet-mist);
-  border: 1px solid rgba(168, 85, 247, 0.3);
-}
-
-.skill-item.gradient-ember {
-  background: var(--gradient-ember);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-}
-
-.skill-item.gradient-warm {
-  background: var(--gradient-warm-glow);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-}
-
-.skill-item.gradient-cool {
-  background: var(--gradient-cool-flow);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-}
-
+/* Gradient Skill Items - High Contrast */
+.skill-item.gradient-plasma,
+.skill-item.gradient-aurora,
+.skill-item.gradient-violet,
+.skill-item.gradient-ember,
+.skill-item.gradient-warm,
+.skill-item.gradient-cool,
 .skill-item.gradient-mystic {
-  background: var(--gradient-mystic-purple);
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  background: var(--bg-card-dark);
+  border: 1px solid var(--border-card-dark);
+  transition: all 300ms ease;
 }
 
 .skill-item.gradient-plasma:hover,
@@ -62,8 +43,9 @@
 .skill-item.gradient-warm:hover,
 .skill-item.gradient-cool:hover,
 .skill-item.gradient-mystic:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .skill-item.gradient-plasma span,
@@ -73,7 +55,7 @@
 .skill-item.gradient-warm span,
 .skill-item.gradient-cool span,
 .skill-item.gradient-mystic span {
-  color: var(--color-white);
+  color: #ffffff;
   font-weight: var(--font-weight-semibold);
 }
 
@@ -81,11 +63,10 @@
   font-size: var(--font-size-h2);
   font-weight: var(--font-weight-bold);
   font-family: var(--font-mono);
-  color: var(--color-text-primary);
+  color: #ffffff;
   text-align: center;
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-2xl);
   line-height: var(--line-height-tight);
-  text-shadow: 2px 2px 20px rgba(22, 22, 23, 0.396);
   padding: 0 var(--space-lg);
 }
 
@@ -136,40 +117,39 @@
   max-width: 120px;
   width: 120px;
   height: 120px;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-sizing: border-box;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: var(--radius-lg);
   transition: all var(--duration-normal) var(--ease-out-cubic);
   flex-shrink: 0;
 }
 
+.skill-item::before {
+  display: none;
+}
+
 .skill-item:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 .skill-item img {
   width: 40px;
   height: 40px;
   object-fit: contain;
-  filter: brightness(0) invert(1) brightness(0.9) contrast(1.1);
+  filter: brightness(0) invert(1) opacity(0.7);
   transition: all var(--duration-normal) var(--ease-out-cubic);
 }
 
 .skill-item:hover img {
-  filter: brightness(0) invert(1) brightness(1.2) contrast(1.3);
+  filter: brightness(0) invert(1) opacity(1);
 }
 
 .skill-item span {
   font-size: var(--font-size-caption);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-normal);
+  color: var(--text-tertiary);
   text-align: center;
   transition: color var(--duration-normal) var(--ease-out-cubic);
-  text-shadow: 1px 1px 6px rgba(22, 22, 23, 0.3);
   white-space: normal;
   word-wrap: break-word;
   line-height: 1.2;
@@ -177,7 +157,7 @@
 }
 
 .skill-item:hover span {
-  color: var(--color-text-primary);
+  color: var(--text-secondary);
 }
 
 /* Marquee Animations */

@@ -40,3 +40,10 @@ class PortfolioApp {
 document.addEventListener('DOMContentLoaded', () => {
     new PortfolioApp();
 });
+
+// Load parallax and 3D tilt scroll effects
+import('./scrollParallax.js').catch(() => {
+  const script = document.createElement('script');
+  script.src = 'js/scrollParallax.js';
+  document.body.appendChild(script);
+});

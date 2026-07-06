@@ -1,5 +1,5 @@
 /* =====================================================================
-   Alberto Valdés Rey , Portfolio v2
+   Alberto Valdés Rey,  Portfolio v2
    Dark editorial theme. Anton / Archivo / Instrument Serif.
    ===================================================================== */
 
@@ -119,21 +119,63 @@ img {
   background: var(--bg);
 }
 
+/* Registered so the gradient size can animate on the compositor
+   (no per-frame JS = no DevTools style-attribute thrash). */
+@property --gw {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 125%;
+}
+
 .hero-bg {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  /* Static fallback; animated (breathing + scale-in) by js/hero.js */
+  /* Colors are CSS vars so the dev panel can recolor without touching JS per frame. */
+  --c1: #0a0a0a;
+  --c2: #3d0c02;
+  --c3: #7a1500;
+  --c4: #c1440e;
+  --c5: #ff6d00;
+  --c6: #ff9e00;
+  --c7: #ffd23f;
+  --gw: 125%;
   background: radial-gradient(
-    125% 125% at 50% 20%,
-    #0a0a0a 35%,
-    #3d0c02 50%,
-    #7a1500 60%,
-    #c1440e 70%,
-    #ff6d00 80%,
-    #ff9e00 90%,
-    #ffd23f 100%
+    var(--gw) var(--gw) at 50% 20%,
+    var(--c1) 35%,
+    var(--c2) 50%,
+    var(--c3) 60%,
+    var(--c4) 70%,
+    var(--c5) 80%,
+    var(--c6) 90%,
+    var(--c7) 100%
   );
+  animation: avr-enter 2s cubic-bezier(0.25, 0.1, 0.25, 1) both,
+    avr-breathe 8s ease-in-out infinite alternate;
+}
+@keyframes avr-enter {
+  from {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes avr-breathe {
+  from {
+    --gw: 120%;
+  }
+  to {
+    --gw: 130%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg {
+    animation: none;
+    --gw: 125%;
+  }
 }
 
 .hero-noise {
@@ -239,6 +281,39 @@ img {
   letter-spacing: 0.2em;
   color: rgba(233, 231, 226, 0.4);
   white-space: nowrap;
+}
+
+/* ---- Hero motion ---- */
+@keyframes avr-rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hero-top {
+  animation: avr-rise 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.2s both;
+}
+.hero-center > .hero-name {
+  animation: avr-rise 1s cubic-bezier(0.22, 0.61, 0.36, 1) 0.35s both;
+}
+.hero-name-row {
+  animation: avr-rise 1s cubic-bezier(0.22, 0.61, 0.36, 1) 0.5s both;
+}
+.hero-bottom {
+  animation: avr-rise 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.75s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-top,
+  .hero-center > .hero-name,
+  .hero-name-row,
+  .hero-bottom {
+    animation: none;
+  }
 }
 
 /* =====================================================================
@@ -548,6 +623,40 @@ img {
 }
 
 /* =====================================================================
+   SCROLL REVEAL  (classes applied by js/reveal.js)
+   ===================================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(44px);
+  transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0s);
+  will-change: opacity, transform;
+}
+.reveal.from-left {
+  transform: translateX(-54px);
+}
+.reveal.from-right {
+  transform: translateX(54px);
+}
+.reveal.from-scale {
+  transform: translateY(30px) scale(0.93);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* =====================================================================
    RESPONSIVE
    ===================================================================== */
 
@@ -619,16 +728,40 @@ img {
   }
 }
 
-@media (max-width: 560px) {
-  .hero-name-row {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .hero-photo {
-    order: -1;
-  }
+@media (max-width: 600px) {
   .hero-top {
     padding: 20px var(--pad);
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  /* Stack the name vertically, avatar centered below it. */
+  .hero-center {
+    padding-top: 4px;
+  }
+  .hero-name {
+    font-size: clamp(52px, 16vw, 84px);
+    line-height: 1;
+  }
+  .hero-name-row {
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 2px;
+  }
+  .hero-photo {
+    order: 1; /* push avatar below "Valdés / Rey" */
+    width: 96px;
+    height: 96px;
+    margin-top: 20px;
+    transform: rotate(3deg);
+  }
+
+  .hero-bottom {
+    gap: 16px;
+    padding-bottom: 32px;
+  }
+  .hero-blurb {
+    font-size: 13px;
   }
 }
 

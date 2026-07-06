@@ -1,11 +1,12 @@
-/* Hero animated gradient background + live color controls.
-   Vanilla port of the AnimatedGradientBackground component:
-   a radial gradient that slowly "breathes", with a scale-in entrance. */
+/* Hero background is animated entirely in CSS (breathing via an @property
+   custom prop + a scale-in entrance), no per-frame JS, so nothing thrashes
+   the inline style attribute. JS here only handles:
+     1. a subtle, idle-stopping mouse parallax on the name block, and
+     2. the dev-only color panel (edits CSS color vars, not per frame). */
 (function () {
   var el = document.getElementById("heroBg");
   if (!el) return;
 
-  var STOPS = [35, 50, 60, 70, 80, 90, 100];
   var PRESETS = {
     Ember: ["#0A0A0A", "#3D0C02", "#7A1500", "#C1440E", "#FF6D00", "#FF9E00", "#FFD23F"],
     Spectrum: ["#0A0A0A", "#2979FF", "#FF80AB", "#FF6D00", "#FFD600", "#00E676", "#3D5AFE"],
@@ -14,53 +15,58 @@
   };
   var DEFAULTS = PRESETS.Ember;
 
-  var startingGap = 125;
-  var breathingRange = 5;
-  var animationSpeed = 0.02;
-  var topOffset = 0;
-
-  var colors = DEFAULTS.slice();
-  var breathing = true;
-  var width = startingGap;
-  var dir = 1;
-
-  function gradient(w) {
-    var stops = STOPS.map(function (stop, i) {
-      return colors[i] + " " + stop + "%";
-    }).join(", ");
-    return (
-      "radial-gradient(" + w + "% " + (w + topOffset) + "% at 50% 20%, " + stops + ")"
-    );
+  function applyColors(cols) {
+    for (var i = 0; i < cols.length; i++) {
+      el.style.setProperty("--c" + (i + 1), cols[i]);
+    }
   }
-  function paint() {
-    el.style.background = gradient(width);
-  }
-
-  paint();
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  if (!reduce) {
-    // Entrance: fade + scale from 1.5 -> 1 over 2s.
-    el.style.opacity = "0";
-    el.style.transform = "scale(1.5)";
-    el.style.transition =
-      "opacity 2s cubic-bezier(0.25,0.1,0.25,1), transform 2s cubic-bezier(0.25,0.1,0.25,1)";
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        el.style.opacity = "1";
-        el.style.transform = "scale(1)";
-      });
-    });
+  /* ---- Subtle mouse parallax on the name block (idle-stopping) --------- */
+  if (!reduce && window.matchMedia("(pointer: fine)").matches) {
+    var hero = document.getElementById("home");
+    var center = document.querySelector(".hero-center");
+    if (hero && center) {
+      var tx = 0, ty = 0, cx = 0, cy = 0;
+      var lastX = null, lastY = null, running = false;
 
-    // Breathing loop.
-    (function tick() {
-      if (width >= startingGap + breathingRange) dir = -1;
-      if (width <= startingGap - breathingRange) dir = 1;
-      if (breathing) width += dir * animationSpeed;
-      paint();
-      requestAnimationFrame(tick);
-    })();
+      function loop() {
+        cx += (tx - cx) * 0.06;
+        cy += (ty - cy) * 0.06;
+        var nx = +cx.toFixed(2), ny = +cy.toFixed(2);
+        if (nx !== lastX || ny !== lastY) {
+          center.style.transform = "translate(" + nx + "px," + ny + "px)";
+          lastX = nx;
+          lastY = ny;
+        }
+        // Stop the rAF loop once we've essentially reached the target, no
+        // idle per-frame writes. It restarts on the next mousemove.
+        if (Math.abs(tx - cx) < 0.05 && Math.abs(ty - cy) < 0.05) {
+          running = false;
+          return;
+        }
+        requestAnimationFrame(loop);
+      }
+      function kick() {
+        if (!running) {
+          running = true;
+          requestAnimationFrame(loop);
+        }
+      }
+
+      hero.addEventListener("mousemove", function (e) {
+        var r = hero.getBoundingClientRect();
+        tx = ((e.clientX - r.left) / r.width - 0.5) * 16; // ~±8px
+        ty = ((e.clientY - r.top) / r.height - 0.5) * 12; // ~±6px
+        kick();
+      });
+      hero.addEventListener("mouseleave", function () {
+        tx = 0;
+        ty = 0;
+        kick();
+      });
+    }
   }
 
   /* ---- Controls (dev-only) -------------------------------------------- */
@@ -81,6 +87,8 @@
   var resetEl = document.getElementById("gcReset");
   if (!toggle || !panel || !swatches) return;
 
+  var colors = DEFAULTS.slice();
+
   function renderSwatches() {
     swatches.innerHTML = "";
     colors.forEach(function (c, i) {
@@ -93,7 +101,7 @@
       input.addEventListener("input", function () {
         colors[i] = input.value;
         wrap.style.background = input.value;
-        if (reduce) paint();
+        el.style.setProperty("--c" + (i + 1), input.value);
       });
       wrap.appendChild(input);
       swatches.appendChild(wrap);
@@ -109,23 +117,22 @@
       "linear-gradient(90deg," + PRESETS[name].slice(1).join(",") + ")";
     b.addEventListener("click", function () {
       colors = PRESETS[name].slice();
+      applyColors(colors);
       renderSwatches();
-      paint();
     });
     presetsEl.appendChild(b);
   });
 
   breathingEl.addEventListener("change", function () {
-    breathing = breathingEl.checked;
+    el.style.animationPlayState = breathingEl.checked ? "" : "paused";
   });
 
   resetEl.addEventListener("click", function () {
     colors = DEFAULTS.slice();
-    width = startingGap;
-    breathing = true;
-    breathingEl.checked = true;
+    applyColors(colors);
     renderSwatches();
-    paint();
+    breathingEl.checked = true;
+    el.style.animationPlayState = "";
   });
 
   toggle.addEventListener("click", function () {

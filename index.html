@@ -5,967 +5,480 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Portfolio of a creative developer specializing in modern web technologies"
+      content="Alberto Valdés Rey , Full Stack Developer & Biomedical Engineer building software at the edge of human biology and technology."
     />
     <meta
       name="keywords"
-      content="web developer, portfolio, modern UI, creative developer"
+      content="Alberto Valdes Rey, full stack developer, biomedical engineer, healthcare software, VR, AI, portfolio"
     />
-    <meta name="author" content="Your Name" />
+    <meta name="author" content="Alberto Valdés Rey" />
+
+    <link rel="icon" href="assets/logos/favicon.ico" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Stylesheets -->
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="css/main.css" />
 
-    <title>Alberto Valdes Rey - Portfolio</title>
+    <title>Alberto Valdés Rey , Portfolio</title>
   </head>
   <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-      <div class="container">
-        <a href="#home" class="nav-logo">
-          <img src="assets/logos/logo.png" alt="AVR Logo" />
-        </a>
-        <ul class="nav-menu">
-          <li><a href="#home" class="nav-link active">Home</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="#projects" class="nav-link">Projects</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-        <button class="mobile-menu-btn">☰</button>
-      </div>
-    </nav>
-
-    <!-- Hero Section -->
+    <!-- ===== HERO ===== -->
     <section id="home" class="hero">
-      <div class="container">
-        <h1>Hello, I am Alberto Valdes Rey</h1>
-        <p class="hero-subtitle">Full Stack Developer</p>
+      <div class="hero-bg" id="heroBg"></div>
+      <div class="hero-noise"></div>
+
+      <div class="hero-top">
+        <a href="mailto:alberto.valdes.rey.official@gmail.com" class="btn-outline"
+          >GET IN TOUCH</a
+        >
+        <div class="hero-socials">
+          <a href="https://github.com/Ledsav" target="_blank" rel="noopener">GITHUB</a>
+          <a
+            href="https://www.linkedin.com/in/alberto-valdes-rey-b975a71b9/"
+            target="_blank"
+            rel="noopener"
+            >LINKEDIN</a
+          >
+        </div>
+      </div>
+
+      <div class="hero-center">
+        <h1 class="hero-name">Alberto</h1>
+        <div class="hero-name-row">
+          <h1 class="hero-name italic">Valdés</h1>
+          <img
+            class="hero-photo"
+            src="assets/images/about/profile.png"
+            alt="Alberto Valdés Rey"
+          />
+          <h1 class="hero-name">Rey</h1>
+        </div>
+      </div>
+
+      <div class="hero-bottom">
+        <p class="hero-blurb left">
+          Full Stack Developer &amp; Biomedical Engineer at
+          <a href="https://mdsim.net/" target="_blank" rel="noopener">MDsim</a>, open
+          to new opportunities.
+        </p>
+        <div class="hero-scroll">SCROLL ↓</div>
+        <p class="hero-blurb right">
+          Building software at the edge of human biology and technology, from
+          Luxembourg.
+        </p>
       </div>
     </section>
 
-    <!-- About Section -->
+    <!-- ===== ABOUT / STATEMENT ===== -->
     <section id="about" class="about">
-      <div class="about-section">
-        <div class="about-header">
-          <span class="section-number">01</span>
-          <h2 class="section-title">About</h2>
+      <h2 class="about-title">
+        I build software that <span class="mark">heals</span>,<br />
+        simulates worlds,<br />
+        connects people.
+      </h2>
+      <div class="about-grid">
+        <div class="about-bio">
+          <p>
+            At ten, a film inspired by Asimov's <em>Bicentennial Man</em> , a robot
+            building synthetic organs on his way to becoming human , sparked a dream:
+            technology that heals from within.
+          </p>
+          <p>
+            Biomedical engineering gave that dream a name. Today I build healthcare
+            software, VR and AI systems that bridge the gap between human biology and
+            technology.
+          </p>
+          <p>
+            When I'm not shipping medical apps, I'm simulating evolution, fluid
+            physics, or throwing themed house parties , chasing the idea that the most
+            beautiful technology is the kind that makes us more human.
+          </p>
         </div>
-
-        <div class="about-intro">
-          <h3 class="about-headline">
-            Where code meets compassion, minds, machines, and medicine.
-          </h3>
-        </div>
-
-        <div class="about-story">
-          <div class="story-block">
-            <p class="lead-text">
-              I was ten years old when I watched a movie inspired by Asimov's
-              <em>The Bicentennial Man</em> — a robot searching for humanity,
-              creating synthetic organs to save lives on his journey toward
-              becoming imperfect, beautifully human.
-            </p>
-          </div>
-
-          <div class="story-block">
-            <p>
-              That moment sparked something in me: a dream of creating
-              technology that could heal from within. My love for science,
-              problem-solving, and healthcare found its true purpose when I
-              discovered biomedical engineering.
-            </p>
-          </div>
-
-          <div class="story-block">
-            <p>
-              Suddenly everything made sense — here was where I could chase that
-              childhood dream of synthetic organs and human-machine integration.
-              Now I'm fueled by a burning passion for development and
-              innovation, diving deep into VR, AI, and software that bridges the
-              gap between human biology and technology.
-            </p>
-          </div>
-
-          <div class="story-block conclusion">
-            <p>
-              Every line of code, every application I build, brings me closer to
-              that ten-year-old's vision. I'm not just building healthcare
-              applications — I'm chasing a dream that began with a robot who
-              taught me that the most beautiful technology is the kind that
-              makes us more human.
-            </p>
-          </div>
-        </div>
-
-        <div class="about-details">
-          <div class="detail-item">
-            <span class="detail-label">Currently</span>
-            <span class="detail-value"
-              >Building the future of healthcare technology</span
-            >
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Focus</span>
-            <span class="detail-value">VR, AI & Biomedical Engineering</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Mission</span>
-            <span class="detail-value"
-              >Technology that makes us more human</span
-            >
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-      <div class="container">
-        <div class="skills-marquee">
-          <!-- First Row - scrolling left to right -->
-          <div class="marquee-row">
-            <div class="marquee-content">
-              <div class="skill-item gradient-plasma">
-                <img src="assets/icons/icons8-python-48.svg" alt="Python" />
-                <span>Python</span>
-              </div>
-              <div class="skill-item">
-                <img src="assets/icons/icons8-javascript.svg" alt="JS" />
-                <span>JS</span>
-              </div>
-              <div class="skill-item">
-                <img
-                  src="assets/icons/icons8-react-native-48.svg"
-                  alt="React"
-                />
-                <span>React</span>
-              </div>
-              <div class="skill-item gradient-aurora">
-                <img src="assets/icons/icons8-unity-50.svg" alt="Unity" />
-                <span>Unity</span>
-              </div>
-              <div class="skill-item">
-                <img
-                  src="assets/icons/icons8-google-cloud-48.svg"
-                  alt="Google Cloud"
-                />
-                <span>Google Cloud</span>
-              </div>
-              <div class="skill-item gradient-ember">
-                <img src="assets/icons/icons8-git-48.svg" alt="Git" />
-                <span>Git</span>
-              </div>
-              <div class="skill-item">
-                <img src="assets/icons/icons8-matlab-48.svg" alt="MATLAB" />
-                <span>MATLAB</span>
-              </div>
-              <div class="skill-item gradient-violet">
-                <img src="assets/icons/icons8-ai.svg" alt="Machine Learning" />
-                <span>AI</span>
-              </div>
-              <!-- Duplicate for seamless loop -->
-              <div class="skill-item gradient-plasma">
-                <img src="assets/icons/icons8-python-48.svg" alt="Python" />
-                <span>Python</span>
-              </div>
-              <div class="skill-item">
-                <img src="assets/icons/icons8-javascript.svg" alt="JS" />
-                <span>JS</span>
-              </div>
-              <div class="skill-item">
-                <img
-                  src="assets/icons/icons8-react-native-48.svg"
-                  alt="React"
-                />
-                <span>React</span>
-              </div>
-              <div class="skill-item gradient-aurora">
-                <img src="assets/icons/icons8-unity-50.svg" alt="Unity" />
-                <span>Unity</span>
-              </div>
-              <div class="skill-item">
-                <img
-                  src="assets/icons/icons8-google-cloud-48.svg"
-                  alt="Google Cloud"
-                />
-                <span>Google Cloud</span>
-              </div>
-              <div class="skill-item gradient-ember">
-                <img src="assets/icons/icons8-git-48.svg" alt="Git" />
-                <span>Git</span>
-              </div>
-              <div class="skill-item">
-                <img src="assets/icons/icons8-matlab-48.svg" alt="MATLAB" />
-                <span>MATLAB</span>
-              </div>
-              <div class="skill-item gradient-violet">
-                <img src="assets/icons/icons8-ai.svg" alt="Machine Learning" />
-                <span>AI</span>
-              </div>
+        <div class="about-meta">
+          <div>
+            <span class="eyebrow">LANGUAGES &amp; FRAMEWORKS</span>
+            <div class="about-meta-values">
+              Python, JavaScript, Kotlin, Java, C#, React, Node.js, Unity, MATLAB
             </div>
           </div>
-
-          <!-- Second Row - scrolling right to left -->
-          <div class="marquee-row reverse">
-            <div class="marquee-content">
-              <div class="skill-item gradient-cool">
-                <img src="assets/icons/icons8-java-48.svg" alt="Java" />
-                <span>Java</span>
-              </div>
-              <div class="skill-item">
-                <img src="assets/icons/icons8-c-sharp-logo.svg" alt="C#" />
-                <span>C#</span>
-              </div>
-              <div class="skill-item gradient-warm">
-                <img src="assets/icons/icons8-html.svg" alt="HTML5" />
-                <span>HTML5</span>
-              </div>
-              <div class="skill-item">
-                <img src="assets/icons/icons8-css.svg" alt="CSS3" />
-                <span>CSS3</span>
-              </div>
-              <div class="skill-item">
-                <img
-                  src="assets/icons/icons8-visual-studio-48.svg"
-                  alt="Visual Studio"
-                />
-                <span>Visual Studio</span>
-              </div>
-              <div class="skill-item gradient-mystic">
-                <img src="assets/icons/icons8-docker.svg" alt="Docker" />
-                <span>Docker</span>
-              </div>
-              <div class="skill-item">
-                <img src="assets/icons/icons8-azure.svg" alt="Azure" />
-                <span>Azure</span>
-              </div>
-              <div class="skill-item">
-                <img src="assets/icons/heart_rate_signal.svg" alt="DSP" />
-                <span>DSP</span>
-              </div>
-              <!-- Duplicate for seamless loop -->
-              <div class="skill-item gradient-cool">
-                <img src="assets/icons/icons8-java-48.svg" alt="Java" />
-                <span>Java</span>
-              </div>
-              <div class="skill-item">
-                <img src="assets/icons/icons8-c-sharp-logo.svg" alt="C#" />
-                <span>C#</span>
-              </div>
-              <div class="skill-item gradient-warm">
-                <img src="assets/icons/icons8-html.svg" alt="HTML5" />
-                <span>HTML5</span>
-              </div>
-              <div class="skill-item">
-                <img src="assets/icons/icons8-css.svg" alt="CSS3" />
-                <span>CSS3</span>
-              </div>
-              <div class="skill-item">
-                <img
-                  src="assets/icons/icons8-visual-studio-48.svg"
-                  alt="Visual Studio"
-                />
-                <span>Visual Studio</span>
-              </div>
-              <div class="skill-item gradient-mystic">
-                <img src="assets/icons/icons8-docker.svg" alt="Docker" />
-                <span>Docker</span>
-              </div>
-              <div class="skill-item">
-                <img src="assets/icons/icons8-azure.svg" alt="Azure" />
-                <span>Azure</span>
-              </div>
-              <div class="skill-item">
-                <img src="assets/icons/heart_rate_signal.svg" alt="DSP" />
-                <span>DSP</span>
-              </div>
+          <div>
+            <span class="eyebrow">PLATFORMS &amp; TOOLS</span>
+            <div class="about-meta-values">
+              Google Cloud, Azure, Docker, Git, Visual Studio
+            </div>
+          </div>
+          <div>
+            <span class="eyebrow">DOMAINS</span>
+            <div class="about-meta-values">
+              Machine Learning, Signal Processing, VR, WebGL, Healthcare Tech
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- ===== EXPERIENCE ===== -->
+    <section id="work" class="experience">
+      <div class="wrap">
+        <h2 class="big-title">Experience</h2>
+        <p class="section-sub">
+          Five years across healthcare, neurotech and automotive R&amp;D.
+        </p>
+        <div class="exp-list">
+          <!-- MDsim -->
+          <div class="exp-row">
+            <div>
+              <h3 class="exp-role">Full Stack Engineer</h3>
+              <a class="exp-company" href="https://mdsim.net/" target="_blank" rel="noopener"
+                >MDsim ↗</a
+              >
+            </div>
+            <div>
+              <p class="exp-desc">
+                Full stack development of web and mobile medical applications, building
+                comprehensive healthcare solutions with modern technologies.
+              </p>
+              <div class="exp-tag">Node.js · React · Mobile · Healthcare Tech</div>
+            </div>
+            <div class="exp-meta">
+              <div class="exp-dates">2024 , PRESENT</div>
+              <div class="exp-location">Luxembourg</div>
+            </div>
+          </div>
+
+          <!-- Myelin-H -->
+          <div class="exp-row">
+            <div>
+              <h3 class="exp-role">Cognitive Game Developer</h3>
+              <a
+                class="exp-company"
+                href="https://www.myelinz.com/"
+                target="_blank"
+                rel="noopener"
+                >Myelin-H ↗</a
+              >
+            </div>
+            <div>
+              <p class="exp-desc">
+                Gamified standard cognitive protocols to assess patient health status;
+                integrated games into complex signal-processing and ML pipelines.
+              </p>
+              <div class="exp-tag">Kotlin · Python · Game Dev · Signal Processing</div>
+            </div>
+            <div class="exp-meta">
+              <div class="exp-dates">2022 , 2024</div>
+              <div class="exp-location">Esch-sur-Alzette, LU</div>
+            </div>
+          </div>
+
+          <!-- Free2Move eSolutions -->
+          <div class="exp-row">
+            <div>
+              <h3 class="exp-role">R&amp;D Intern</h3>
+              <a
+                class="exp-company"
+                href="https://www.esolutions.free2move.com/"
+                target="_blank"
+                rel="noopener"
+                >Free2Move eSolutions ↗</a
+              >
+            </div>
+            <div>
+              <p class="exp-desc">
+                A 1.5-year R&amp;D project through Alta Scuola Politecnica , real-world
+                research experience in automotive technology.
+              </p>
+              <div class="exp-tag">MATLAB · OOP · Research · Automotive</div>
+            </div>
+            <div class="exp-meta">
+              <div class="exp-dates">2021 , 2022</div>
+              <div class="exp-location">Italy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
     <section id="projects" class="projects">
-      <div class="container">
-        <div class="projects-header">
-          <span class="section-number">02</span>
-          <h2 class="section-title">Work & Projects</h2>
-        </div>
-
-        <!-- Professional Experience -->
-        <div class="experience-section">
-          <h3 class="subsection-title">Professional Experience</h3>
-          <div class="experience-grid">
-            <!-- MDsim -->
-            <div class="experience-card current">
-              <div class="experience-header">
-                <div class="company-info">
-                  <div class="company-logo">
-                    <img src="assets/images/work/mdsim-logo.png" alt="MDsim" />
-                  </div>
-                  <div class="company-details">
-                    <h4>Full Stack Engineer</h4>
-                    <p class="company-name">MDsim</p>
-                    <p class="location">Luxembourg, Luxembourg</p>
-                    <a
-                      href="https://mdsim.net/"
-                      class="company-link"
-                      target="_blank"
-                      >mdsim.net</a
-                    >
-                  </div>
-                </div>
-                <div class="duration">
-                  <span class="period">Aug 2024 - Present</span>
-                  <span class="badge current-badge">Current</span>
-                </div>
+      <div class="wrap">
+        <h2 class="big-title">Projects</h2>
+        <p class="section-sub">
+          Simulations, experiments and tools , built with curiosity.
+        </p>
+        <div class="proj-list">
+          <!-- Evo Wars -->
+          <div class="proj-row">
+            <a
+              class="proj-frame"
+              href="https://www.albertovaldesrey.com/evo-wars"
+              target="_blank"
+              rel="noopener"
+            >
+              <div class="proj-chrome">
+                <i></i><i></i><i></i>
+                <span class="proj-domain">albertovaldesrey.com/evo-wars</span>
               </div>
-              <p class="role-description">
-                Full stack development of web and mobile medical applications,
-                building comprehensive healthcare solutions with modern
-                technologies.
+              <img
+                class="proj-img"
+                src="assets/images/projects/evo-wars.png"
+                alt="Evo Wars"
+              />
+            </a>
+            <div class="proj-info">
+              <span class="eyebrow">EVOLUTION SIMULATION</span>
+              <h3 class="proj-name">Evo Wars</h3>
+              <p class="proj-desc">
+                Organisms evolve through natural selection in real time , genetic
+                systems, DNA sequences, species formation and family trees.
               </p>
-              <div class="tech-stack">
-                <span>Node.js</span>
-                <span>React</span>
-                <span>Mobile Development</span>
-                <span>Healthcare Tech</span>
-              </div>
-            </div>
-
-            <!-- MyelinZ -->
-            <div class="experience-card">
-              <div class="experience-header">
-                <div class="company-info">
-                  <div class="company-logo">
-                    <img
-                      src="assets/images/work/myelinz-logo-white.png"
-                      alt="MyelinZ"
-                    />
-                  </div>
-                  <div class="company-details">
-                    <h4>Cognitive Game Developer</h4>
-                    <p class="company-name">Myelin-H</p>
-                    <p class="location">Esch-Sur-Alzette, Luxembourg</p>
-                    <a
-                      href="https://www.myelinz.com/"
-                      class="company-link"
-                      target="_blank"
-                      >myelinz.com</a
-                    >
-                  </div>
-                </div>
-                <div class="duration">
-                  <span class="period">Nov 2022 - Jun 2024</span>
-                  <span class="duration-length">1 yr 8 mos</span>
-                </div>
-              </div>
-              <p class="role-description">
-                Gamified standard cognitive protocols to assess patient health
-                status and integrated games into complex software environments
-                for signal processing and ML pipelines.
-              </p>
-              <div class="tech-stack">
-                <span>Kotlin</span>
-                <span>Python</span>
-                <span>Game Development</span>
-                <span>ML Pipelines</span>
-                <span>Signal Processing</span>
-              </div>
-            </div>
-
-            <!-- Free2move -->
-            <div class="experience-card">
-              <div class="experience-header">
-                <div class="company-info">
-                  <div class="company-logo">
-                    <img
-                      src="assets/images/work/free2move-logo.png"
-                      alt="Free2move"
-                    />
-                  </div>
-                  <div class="company-details">
-                    <h4>Research & Development Intern</h4>
-                    <p class="company-name">Free2Move eSolutions</p>
-                    <p class="location">Italy</p>
-                    <a
-                      href="https://www.esolutions.free2move.com/eu/it_it/"
-                      class="company-link"
-                      target="_blank"
-                      >free2move.com</a
-                    >
-                  </div>
-                </div>
-                <div class="duration">
-                  <span class="period">Jul 2021 - Sep 2022</span>
-                  <span class="duration-length">1 yr 3 mos</span>
-                </div>
-              </div>
-              <p class="role-description">
-                Worked on a 1.5-year long project with Free2Move eSolutions
-                through Alta Scuola Politecnica, gaining real-world R&D
-                experience in automotive technology.
-              </p>
-              <div class="tech-stack">
-                <span>MATLAB</span>
-                <span>OOP</span>
-                <span>Research</span>
-                <span>Automotive Tech</span>
-              </div>
+              <div class="proj-tag">React · Canvas API · Genetics · AI</div>
+              <a
+                class="btn-outline"
+                href="https://www.albertovaldesrey.com/evo-wars"
+                target="_blank"
+                rel="noopener"
+                >PLAY DEMO ↗</a
+              >
             </div>
           </div>
-        </div>
 
-        <!-- Personal Projects -->
-        <div class="projects-section">
-          <h3 class="subsection-title">Personal Projects</h3>
-          <div class="featured-grid">
-            <!-- Ciao Fridays -->
-            <div class="featured-project-card">
-              <div class="featured-project-content">
-                <div class="featured-project-image">
-                  <img
-                    src="assets/images/projects/ciao-fridays.jpeg"
-                    alt="Ciao Fridays Platform"
-                  />
-                </div>
-                <div class="featured-project-details">
-                  <div class="project-category">Event Platform</div>
-                  <h4 class="featured-project-title">Ciao Fridays</h4>
-                  <p class="featured-project-description">
-                    Platform to manage speakeasy events. Themed home party
-                    Fridays bringing people together during winter months with
-                    elegant event management and community building features.
-                  </p>
-                  <div class="featured-project-tech">
-                    <span>Event Management</span>
-                    <span>Web Platform</span>
-                    <span>Community</span>
-                    <span>Node.js</span>
-                  </div>
-                  <a
-                    href="https://ciaofridays.com/"
-                    target="_blank"
-                    class="featured-project-link"
-                  >
-                    <span>Visit Live Site</span>
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path d="M7 17l9.2-9.2M17 17V7H7" />
-                    </svg>
-                  </a>
-                </div>
+          <!-- Flow Field Simulation -->
+          <div class="proj-row reverse">
+            <a
+              class="proj-frame"
+              href="https://www.albertovaldesrey.com/flow-field/"
+              target="_blank"
+              rel="noopener"
+            >
+              <div class="proj-chrome">
+                <i></i><i></i><i></i>
+                <span class="proj-domain">albertovaldesrey.com/flow-field</span>
               </div>
+              <img
+                class="proj-img"
+                src="assets/images/projects/flow-field.png"
+                alt="Flow Field Simulation"
+              />
+            </a>
+            <div class="proj-info">
+              <span class="eyebrow">PHYSICS SIMULATION</span>
+              <h3 class="proj-name">Flow Field Simulation</h3>
+              <p class="proj-desc">
+                Flow and force fields in fluid simulations , complex physics made
+                visual, tactile and interactive.
+              </p>
+              <div class="proj-tag">WebGL · Physics · Interactive Art</div>
+              <a
+                class="btn-outline"
+                href="https://www.albertovaldesrey.com/flow-field/"
+                target="_blank"
+                rel="noopener"
+                >EXPERIENCE ↗</a
+              >
             </div>
+          </div>
 
-            <!-- PopGlobe -->
-            <div class="featured-project-card">
-              <div class="featured-project-content reverse">
-                <div class="featured-project-image">
-                  <img
-                    src="assets/images/projects/popglobe.png"
-                    alt="PopGlobe Application"
-                  />
-                </div>
-                <div class="featured-project-details">
-                  <div class="project-category">Interactive Web App</div>
-                  <h4 class="featured-project-title">PopGlobe</h4>
-                  <p class="featured-project-description">
-                    Interactive web application testing population perception
-                    and urban demographics. Challenge users to estimate city
-                    populations and learn about global urbanization patterns.
-                  </p>
-                  <div class="featured-project-tech">
-                    <span>Interactive Design</span>
-                    <span>Data Visualization</span>
-                    <span>JavaScript</span>
-                    <span>APIs</span>
-                  </div>
-                  <a
-                    href="https://popglobe.netlify.app/"
-                    target="_blank"
-                    class="featured-project-link"
-                  >
-                    <span>Try Demo</span>
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path d="M7 17l9.2-9.2M17 17V7H7" />
-                    </svg>
-                  </a>
-                </div>
+          <!-- PopGlobe -->
+          <div class="proj-row">
+            <a
+              class="proj-frame"
+              href="https://popglobe.netlify.app/"
+              target="_blank"
+              rel="noopener"
+            >
+              <div class="proj-chrome">
+                <i></i><i></i><i></i>
+                <span class="proj-domain">popglobe.netlify.app</span>
               </div>
+              <img
+                class="proj-img"
+                src="assets/images/projects/popglobe.png"
+                alt="PopGlobe"
+              />
+            </a>
+            <div class="proj-info">
+              <span class="eyebrow">INTERACTIVE WEB APP</span>
+              <h3 class="proj-name">PopGlobe</h3>
+              <p class="proj-desc">
+                Guess city populations and learn about global urbanization patterns
+                through play.
+              </p>
+              <div class="proj-tag">Data Viz · JavaScript · APIs</div>
+              <a
+                class="btn-outline"
+                href="https://popglobe.netlify.app/"
+                target="_blank"
+                rel="noopener"
+                >TRY DEMO ↗</a
+              >
             </div>
+          </div>
 
-            <!-- Flow Field -->
-            <div class="featured-project-card">
-              <div class="featured-project-content">
-                <div class="featured-project-image">
-                  <img
-                    src="assets/images/projects/flow-field.png"
-                    alt="Flow Field Simulation"
-                  />
-                </div>
-                <div class="featured-project-details">
-                  <div class="project-category">Physics Simulation</div>
-                  <h4 class="featured-project-title">Flow Field Simulation</h4>
-                  <p class="featured-project-description">
-                    Interactive experience exploring flow and force fields in
-                    fluid simulations. Understanding complex physics concepts
-                    through beautiful visual representations and real-time
-                    interactions.
-                  </p>
-                  <div class="featured-project-tech">
-                    <span>WebGL</span>
-                    <span>Physics Simulation</span>
-                    <span>Interactive Art</span>
-                    <span>JavaScript</span>
-                  </div>
-                  <a
-                    href="https://www.albertovaldesrey.com/flow-field/"
-                    target="_blank"
-                    class="featured-project-link"
-                  >
-                    <span>Experience</span>
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path d="M7 17l9.2-9.2M17 17V7H7" />
-                    </svg>
-                  </a>
-                </div>
+          <!-- Ciao Fridays -->
+          <div class="proj-row reverse">
+            <a
+              class="proj-frame"
+              href="https://ciaofridays.com/"
+              target="_blank"
+              rel="noopener"
+            >
+              <div class="proj-chrome">
+                <i></i><i></i><i></i>
+                <span class="proj-domain">ciaofridays.com</span>
               </div>
+              <img
+                class="proj-img"
+                src="assets/images/projects/ciao-fridays.jpeg"
+                alt="Ciao Fridays"
+              />
+            </a>
+            <div class="proj-info">
+              <span class="eyebrow">EVENT PLATFORM</span>
+              <h3 class="proj-name">Ciao Fridays</h3>
+              <p class="proj-desc">
+                A platform for speakeasy home-party events , bringing people together
+                during the winter months.
+              </p>
+              <div class="proj-tag">Node.js · Community · Web Platform</div>
+              <a
+                class="btn-outline"
+                href="https://ciaofridays.com/"
+                target="_blank"
+                rel="noopener"
+                >VISIT SITE ↗</a
+              >
             </div>
+          </div>
 
-            <!-- Evo Wars -->
-            <div class="featured-project-card">
-              <div class="featured-project-content reverse">
-                <div class="featured-project-image">
-                  <img
-                    src="assets/images/projects/evo-wars.png"
-                    alt="Evo Wars Evolution Simulation"
-                  />
-                </div>
-                <div class="featured-project-details">
-                  <div class="project-category">Evolution Simulation</div>
-                  <h4 class="featured-project-title">Evo Wars</h4>
-                  <p class="featured-project-description">
-                    Interactive evolution simulation where organisms evolve
-                    through natural selection, developing unique traits, forming
-                    species, and competing for survival. Watch evolution happen
-                    in real-time with genetic systems, DNA sequences, and family
-                    trees.
-                  </p>
-                  <div class="featured-project-tech">
-                    <span>React</span>
-                    <span>Canvas API</span>
-                    <span>Genetics</span>
-                    <span>AI Simulation</span>
-                  </div>
-                  <a
-                    href="https://www.albertovaldesrey.com/evo-wars"
-                    target="_blank"
-                    class="featured-project-link"
-                  >
-                    <span>Play Demo</span>
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path d="M7 17l9.2-9.2M17 17V7H7" />
-                    </svg>
-                  </a>
-                </div>
+          <!-- Spike & Learn -->
+          <div class="proj-row">
+            <a
+              class="proj-frame"
+              href="https://www.albertovaldesrey.com/volley-positions/"
+              target="_blank"
+              rel="noopener"
+            >
+              <div class="proj-chrome">
+                <i></i><i></i><i></i>
+                <span class="proj-domain">albertovaldesrey.com/volley-positions</span>
               </div>
+              <img
+                class="proj-img"
+                src="assets/images/projects/volley.png"
+                alt="Spike & Learn"
+              />
+            </a>
+            <div class="proj-info">
+              <span class="eyebrow">EDUCATIONAL TOOL</span>
+              <h3 class="proj-name">Spike &amp; Learn</h3>
+              <p class="proj-desc">
+                Volleyball positions and faults explained visually, designed for
+                beginners.
+              </p>
+              <div class="proj-tag">React · Education · Sports Tech</div>
+              <a
+                class="btn-outline"
+                href="https://www.albertovaldesrey.com/volley-positions/"
+                target="_blank"
+                rel="noopener"
+                >LEARN ↗</a
+              >
             </div>
+          </div>
 
-            <!-- Spike & Learn -->
-            <div class="featured-project-card">
-              <div class="featured-project-content">
-                <div class="featured-project-image">
-                  <img
-                    src="assets/images/projects/volley.png"
-                    alt="Spike & Learn"
-                  />
-                </div>
-                <div class="featured-project-details">
-                  <div class="project-category">Educational Tool</div>
-                  <h4 class="featured-project-title">Spike & Learn</h4>
-                  <p class="featured-project-description">
-                    Interactive experience exploring volleyball positions and
-                    faults. Learn the fundamentals of the game through beautiful
-                    visual representations designed specifically for beginners.
-                  </p>
-                  <div class="featured-project-tech">
-                    <span>React</span>
-                    <span>JavaScript</span>
-                    <span>Education</span>
-                    <span>Sports Tech</span>
-                  </div>
-                  <a
-                    href="https://www.albertovaldesrey.com/volley-positions/"
-                    target="_blank"
-                    class="featured-project-link"
-                  >
-                    <span>Learn</span>
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path d="M7 17l9.2-9.2M17 17V7H7" />
-                    </svg>
-                  </a>
-                </div>
+          <!-- LUX (Tarot) -->
+          <div class="proj-row reverse">
+            <a
+              class="proj-frame"
+              href="https://www.albertovaldesrey.com/tarot-web/"
+              target="_blank"
+              rel="noopener"
+            >
+              <div class="proj-chrome">
+                <i></i><i></i><i></i>
+                <span class="proj-domain">albertovaldesrey.com/tarot-web</span>
               </div>
+              <img class="proj-img" src="assets/images/projects/taro-web.png" alt="LUX — AI Tarot" />
+            </a>
+            <div class="proj-info">
+              <span class="eyebrow">AI TAROT EXPERIENCE</span>
+              <h3 class="proj-name">LUX</h3>
+              <p class="proj-desc">
+                An AI-driven tarot reading experience — draw a spread online, or reserve
+                a seat at the live pop-up table. Vintage mysticism meets a modern,
+                conversational web app.
+              </p>
+              <div class="proj-tag">React · AI · Web · Pop-up Store</div>
+              <a
+                class="btn-outline"
+                href="https://www.albertovaldesrey.com/tarot-web/"
+                target="_blank"
+                rel="noopener"
+                >DRAW A READING ↗</a
+              >
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- ===== CONTACT ===== -->
     <section id="contact" class="contact">
-      <div class="container">
-        <div class="contact-header">
-          <span class="section-number">03</span>
-          <h2 class="section-title">Let's Connect</h2>
-        </div>
-
-        <div class="contact-content">
-          <div class="contact-intro">
-            <h3 class="contact-headline">
-              Ready to build something amazing together?
-            </h3>
-            <p class="contact-description">
-              Whether you're looking to collaborate on innovative healthcare
-              technology, discuss cutting-edge VR applications, or explore new
-              opportunities in biomedical engineering, I'd love to hear from
-              you.
-            </p>
-          </div>
-
-          <div class="contact-grid">
-            <!-- Direct Contact -->
-            <div class="contact-methods">
-              <h4>Get In Touch</h4>
-              <div class="contact-items">
-                <a
-                  href="mailto:alberto.valdes.rey@example.com"
-                  class="contact-item email"
-                >
-                  <div class="contact-icon">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                      />
-                      <polyline points="22,6 12,13 2,6" />
-                    </svg>
-                  </div>
-                  <div class="contact-details">
-                    <span class="contact-label">Email</span>
-                    <span class="contact-value"
-                      >alberto.valdes.rey.official@gmail.com</span
-                    >
-                  </div>
-                </a>
-
-                <a
-                  href="https://www.linkedin.com/in/alberto-valdes-rey-b975a71b9/"
-                  target="_blank"
-                  class="contact-item linkedin"
-                >
-                  <div class="contact-icon">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
-                      />
-                      <rect x="2" y="9" width="4" height="12" />
-                      <circle cx="4" cy="4" r="2" />
-                    </svg>
-                  </div>
-                  <div class="contact-details">
-                    <span class="contact-label">LinkedIn</span>
-                    <span class="contact-value">Alberto Valdes Rey</span>
-                  </div>
-                </a>
-
-                <a
-                  href="https://github.com/Ledsav"
-                  target="_blank"
-                  class="contact-item github"
-                >
-                  <div class="contact-icon">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-                      />
-                    </svg>
-                  </div>
-                  <div class="contact-details">
-                    <span class="contact-label">GitHub</span>
-                    <span class="contact-value">@Ledsav</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-
-            <!-- Social Media -->
-            <div class="social-section">
-              <h4>Follow My Journey</h4>
-              <div class="social-grid">
-                <a
-                  href="https://www.instagram.com/ledsav_dev/"
-                  target="_blank"
-                  class="social-card dev"
-                >
-                  <div class="social-icon">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                      <path
-                        d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
-                      />
-                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                    </svg>
-                  </div>
-                  <div class="social-content">
-                    <span class="social-handle">@ledsav_dev</span>
-                    <span class="social-description">Development Journey</span>
-                  </div>
-                </a>
-
-                <a
-                  href="https://www.instagram.com/alberto_valdes_rey/"
-                  target="_blank"
-                  class="social-card personal"
-                >
-                  <div class="social-icon">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                      <path
-                        d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
-                      />
-                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                    </svg>
-                  </div>
-                  <div class="social-content">
-                    <span class="social-handle">@alberto_valdes_rey</span>
-                    <span class="social-description">Personal Life</span>
-                  </div>
-                </a>
-
-                <a
-                  href="https://www.instagram.com/ledsav/"
-                  target="_blank"
-                  class="social-card creative"
-                >
-                  <div class="social-icon">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                      <path
-                        d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
-                      />
-                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                    </svg>
-                  </div>
-                  <div class="social-content">
-                    <span class="social-handle">@ledsav</span>
-                    <span class="social-description">Creative Projects</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
+      <div class="contact-lead-wrap">
+        <p class="contact-lead">
+          Got an idea, a role, or a strange simulation in mind?
+        </p>
+        <a class="contact-cta" href="mailto:alberto.valdes.rey.official@gmail.com">
+          <span>Let's talk</span>
+        </a>
+      </div>
+      <div class="footer">
+        <span class="footer-copy">© 2026 ALBERTO VALDÉS REY</span>
+        <div class="footer-links">
+          <a href="mailto:alberto.valdes.rey.official@gmail.com">EMAIL</a>
+          <a
+            href="https://www.linkedin.com/in/alberto-valdes-rey-b975a71b9/"
+            target="_blank"
+            rel="noopener"
+            >LINKEDIN</a
+          >
+          <a href="https://github.com/Ledsav" target="_blank" rel="noopener">GITHUB</a>
+          <a
+            href="https://www.instagram.com/ledsav_dev/"
+            target="_blank"
+            rel="noopener"
+            >INSTAGRAM</a
+          >
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-main">
-            <div class="footer-brand">
-              <h3>Alberto Valdes Rey</h3>
-              <p>Full Stack Developer & Biomedical Engineer</p>
-            </div>
-            <div class="footer-links">
-              <div class="footer-section">
-                <h4>Connect</h4>
-                <ul>
-                  <li>
-                    <a
-                      href="https://www.linkedin.com/in/alberto-valdes-rey-b975a71b9/"
-                      target="_blank"
-                      >LinkedIn</a
-                    >
-                  </li>
-                  <li>
-                    <a href="https://github.com/Ledsav" target="_blank"
-                      >GitHub</a
-                    >
-                  </li>
-                  <li>
-                    <a href="mailto:alberto.valdes.rey@example.com">Email</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="footer-section">
-                <h4>Projects</h4>
-                <ul>
-                  <li>
-                    <a href="https://ciaofridays.com/" target="_blank"
-                      >Ciao Fridays</a
-                    >
-                  </li>
-                  <li>
-                    <a href="https://popglobe.netlify.app/" target="_blank"
-                      >PopGlobe</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.albertovaldesrey.com/flow-field/"
-                      target="_blank"
-                      >Flow Field</a
-                    >
-                  </li>
-                </ul>
-              </div>
-              <div class="footer-section">
-                <h4>Follow</h4>
-                <ul>
-                  <li>
-                    <a
-                      href="https://www.instagram.com/ledsav_dev/"
-                      target="_blank"
-                      >@ledsav_dev</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.instagram.com/alberto_valdes_rey/"
-                      target="_blank"
-                      >@alberto_valdes_rey</a
-                    >
-                  </li>
-                  <li>
-                    <a href="https://www.instagram.com/ledsav/" target="_blank"
-                      >@ledsav</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-bottom">
-            <p>
-              &copy; 2025 Alberto Valdes Rey. Crafted with passion and code.
-            </p>
-            <div class="footer-tech">
-              <span>Built with modern web technologies</span>
-            </div>
-          </div>
+    <!-- Live hero-gradient controls -->
+    <div class="gc" id="gradientControls">
+      <button class="gc-toggle" id="gcToggle" type="button" aria-expanded="false">
+        <span class="gc-dot"></span> Gradient
+      </button>
+      <div class="gc-panel" id="gcPanel" hidden>
+        <div class="gc-head">
+          <span>Hero gradient</span>
+          <button class="gc-reset" id="gcReset" type="button">Reset</button>
         </div>
+        <div class="gc-swatches" id="gcSwatches"></div>
+        <label class="gc-check">
+          <input type="checkbox" id="gcBreathing" checked /> Breathing
+        </label>
+        <div class="gc-presets" id="gcPresets"></div>
       </div>
-    </footer>
+    </div>
 
-    <!-- Modern Three.js ES6 Modules -->
-    <script type="importmap">
-      {
-        "imports": {
-          "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
-          "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
-        }
-      }
-    </script>
-
-    <!-- JS Modules -->
-    <script src="js/navigation.js"></script>
-    <script src="js/mobileMenu.js"></script>
-    <script src="js/scrollEffects.js"></script>
-    <script src="js/contactForm.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/mouseFollower.js"></script>
-    <script src="js/scrollImageTransition.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/marqueeOptimizer.js"></script>
-    <script src="js/fadeOnScroll.js"></script>
-    <script src="js/scrollParallax.js"></script>
+    <script src="js/hero.js"></script>
   </body>
 </html>

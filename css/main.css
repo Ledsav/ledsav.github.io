@@ -528,7 +528,6 @@ img {
 }
 
 .proj-frame--phone {
-  position: relative;
   border: none;
   border-radius: 0;
   overflow: visible;
@@ -541,21 +540,8 @@ img {
   transform: translateY(-6px);
 }
 
-.phone-frame {
-  display: block;
-  width: 100%;
-  pointer-events: none;
-  user-select: none;
-}
-
 .proj-frame--phone .proj-img {
-  position: absolute;
-  left: 6.6%;
-  top: 3.3%;
-  width: 86.8%;
-  height: 93.4%;
   aspect-ratio: auto;
-  border-radius: 15% / 7%;
 }
 
 .proj-img {

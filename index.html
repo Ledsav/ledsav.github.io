@@ -3,17 +3,106 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alberto Valdés Rey – Full Stack Developer &amp; Biomedical Engineer | Luxembourg</title>
     <meta
       name="description"
-      content="Alberto Valdés Rey,  Full Stack Developer & Biomedical Engineer building software at the edge of human biology and technology."
-    />
-    <meta
-      name="keywords"
-      content="Alberto Valdés Rey, full stack developer, biomedical engineer, healthcare software, VR, AI, portfolio"
+      content="Alberto Valdés Rey, Full Stack Developer & Biomedical Engineer in Luxembourg building healthcare software, VR and AI systems at the edge of human biology and technology."
     />
     <meta name="author" content="Alberto Valdés Rey" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#0e0f11" />
+    <link rel="canonical" href="https://www.albertovaldesrey.com/" />
+
+    <!-- Open Graph / social previews -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Alberto Valdés Rey" />
+    <meta property="og:url" content="https://www.albertovaldesrey.com/" />
+    <meta property="og:title" content="Alberto Valdés Rey – Full Stack Developer & Biomedical Engineer" />
+    <meta
+      property="og:description"
+      content="Building healthcare software, VR and AI systems at the edge of human biology and technology, from Luxembourg."
+    />
+    <meta property="og:image" content="https://www.albertovaldesrey.com/assets/images/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Alberto Valdés Rey – Full Stack Developer & Biomedical Engineer" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="profile:first_name" content="Alberto" />
+    <meta property="profile:last_name" content="Valdés Rey" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Alberto Valdés Rey – Full Stack Developer & Biomedical Engineer" />
+    <meta
+      name="twitter:description"
+      content="Building healthcare software, VR and AI systems at the edge of human biology and technology, from Luxembourg."
+    />
+    <meta name="twitter:image" content="https://www.albertovaldesrey.com/assets/images/og-image.jpg" />
 
     <link rel="icon" href="assets/logos/favicon.ico" />
+    <link rel="apple-touch-icon" href="assets/logos/logo.png" />
+    <link rel="preload" as="image" href="assets/images/about/profile.webp" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.albertovaldesrey.com/#website",
+            "url": "https://www.albertovaldesrey.com/",
+            "name": "Alberto Valdés Rey",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://www.albertovaldesrey.com/#person" }
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://www.albertovaldesrey.com/#profile",
+            "url": "https://www.albertovaldesrey.com/",
+            "name": "Alberto Valdés Rey – Portfolio",
+            "isPartOf": { "@id": "https://www.albertovaldesrey.com/#website" },
+            "mainEntity": { "@id": "https://www.albertovaldesrey.com/#person" }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://www.albertovaldesrey.com/#person",
+            "name": "Alberto Valdés Rey",
+            "alternateName": "Alberto Valdes Rey",
+            "url": "https://www.albertovaldesrey.com/",
+            "image": "https://www.albertovaldesrey.com/assets/images/about/profile.webp",
+            "jobTitle": "Full Stack Developer & Biomedical Engineer",
+            "description": "Full Stack Developer & Biomedical Engineer building healthcare software, VR and AI systems.",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "MDsim",
+              "url": "https://mdsim.net/"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "LU"
+            },
+            "knowsAbout": [
+              "Full stack development",
+              "Biomedical engineering",
+              "Healthcare software",
+              "Virtual reality",
+              "Machine learning",
+              "Signal processing",
+              "WebGL",
+              "Python",
+              "JavaScript",
+              "React",
+              "Node.js",
+              "Unity"
+            ],
+            "sameAs": [
+              "https://github.com/Ledsav",
+              "https://www.linkedin.com/in/alberto-valdes-rey-b975a71b9/",
+              "https://www.instagram.com/ledsav_dev/"
+            ]
+          }
+        ]
+      }
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,8 +114,6 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/main.css" />
-
-    <title>Alberto Valdés Rey,  Portfolio</title>
   </head>
   <body>
     <!-- ===== HERO ===== -->
@@ -49,18 +136,21 @@
         </div>
       </div>
 
-      <div class="hero-center">
-        <h1 class="hero-name">Alberto</h1>
-        <div class="hero-name-row">
-          <h1 class="hero-name italic">Valdés</h1>
+      <h1 class="hero-center" aria-label="Alberto Valdés Rey">
+        <span class="hero-name">Alberto</span>
+        <span class="hero-name-row">
+          <span class="hero-name italic">Valdés</span>
           <img
             class="hero-photo"
-            src="assets/images/about/profile.png"
+            src="assets/images/about/profile.webp"
             alt="Alberto Valdés Rey"
+            width="400"
+            height="400"
+            fetchpriority="high"
           />
-          <h1 class="hero-name">Rey</h1>
-        </div>
-      </div>
+          <span class="hero-name">Rey</span>
+        </span>
+      </h1>
 
       <div class="hero-bottom">
         <p class="hero-blurb left">
@@ -222,10 +312,12 @@
               target="_blank"
               rel="noopener"
             >
-              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" />
+              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" width="5847" height="3300" loading="lazy" decoding="async" />
               <img
                 class="proj-img"
-                src="assets/images/projects/ciao-fridays.jpeg"
+                loading="lazy"
+                decoding="async"
+                src="assets/images/projects/ciao-fridays.webp"
                 alt="Ciao Fridays"
               />
             </a>
@@ -255,10 +347,12 @@
               target="_blank"
               rel="noopener"
             >
-              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" />
+              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" width="5847" height="3300" loading="lazy" decoding="async" />
               <img
                 class="proj-img"
-                src="assets/images/projects/yc-complexity.png"
+                loading="lazy"
+                decoding="async"
+                src="assets/images/projects/yc-complexity.webp"
                 alt="Y Combinator Analysis"
               />
             </a>
@@ -288,8 +382,8 @@
               target="_blank"
               rel="noopener"
             >
-              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" />
-              <img class="proj-img" src="assets/images/projects/taro-web.png" alt="LUX, AI Tarot" />
+              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" width="5847" height="3300" loading="lazy" decoding="async" />
+              <img class="proj-img" loading="lazy" decoding="async" src="assets/images/projects/taro-web.webp" alt="LUX, AI Tarot" />
             </a>
             <div class="proj-info">
               <span class="eyebrow">AI TAROT EXPERIENCE</span>
@@ -318,10 +412,12 @@
               target="_blank"
               rel="noopener"
             >
-              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" />
+              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" width="5847" height="3300" loading="lazy" decoding="async" />
               <img
                 class="proj-img"
-                src="assets/images/projects/evo-wars.png"
+                loading="lazy"
+                decoding="async"
+                src="assets/images/projects/evo-wars.webp"
                 alt="Evo Wars"
               />
             </a>
@@ -351,10 +447,12 @@
               target="_blank"
               rel="noopener"
             >
-              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" />
+              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" width="5847" height="3300" loading="lazy" decoding="async" />
               <img
                 class="proj-img"
-                src="assets/images/projects/flow-field.png"
+                loading="lazy"
+                decoding="async"
+                src="assets/images/projects/flow-field.webp"
                 alt="Flow Field Simulation"
               />
             </a>
@@ -384,10 +482,12 @@
               target="_blank"
               rel="noopener"
             >
-              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" />
+              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" width="5847" height="3300" loading="lazy" decoding="async" />
               <img
                 class="proj-img"
-                src="assets/images/projects/popglobe.png"
+                loading="lazy"
+                decoding="async"
+                src="assets/images/projects/popglobe.webp"
                 alt="PopGlobe"
               />
             </a>
@@ -417,10 +517,12 @@
               target="_blank"
               rel="noopener"
             >
-              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" />
+              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" width="5847" height="3300" loading="lazy" decoding="async" />
               <img
                 class="proj-img"
-                src="assets/images/projects/volley.png"
+                loading="lazy"
+                decoding="async"
+                src="assets/images/projects/volley.webp"
                 alt="Spike & Learn"
               />
             </a>
@@ -450,10 +552,12 @@
               target="_blank"
               rel="noopener"
             >
-              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" />
+              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" width="5847" height="3300" loading="lazy" decoding="async" />
               <img
                 class="proj-img"
-                src="assets/images/projects/beatcut.png"
+                loading="lazy"
+                decoding="async"
+                src="assets/images/projects/beatcut.webp"
                 alt="BeatCut"
               />
             </a>
@@ -486,7 +590,9 @@
             >
               <img
                 class="proj-img"
-                src="assets/images/projects/bump-music.png"
+                loading="lazy"
+                decoding="async"
+                src="assets/images/projects/bump-music.webp"
                 alt="Bump Music"
               />
             </a>
@@ -516,10 +622,12 @@
               target="_blank"
               rel="noopener"
             >
-              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" />
+              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" width="5847" height="3300" loading="lazy" decoding="async" />
               <img
                 class="proj-img"
-                src="assets/images/projects/fit-snapshot.png"
+                loading="lazy"
+                decoding="async"
+                src="assets/images/projects/fit-snapshot.webp"
                 alt="FitSnapshot"
               />
             </a>
@@ -551,10 +659,12 @@
               target="_blank"
               rel="noopener"
             >
-              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" />
+              <img class="laptop-frame" src="assets/images/body/laptop.png" alt="" width="5847" height="3300" loading="lazy" decoding="async" />
               <img
                 class="proj-img"
-                src="assets/images/projects/volleyskills.png"
+                loading="lazy"
+                decoding="async"
+                src="assets/images/projects/volleyskills.webp"
                 alt="VolleySkills"
               />
             </a>

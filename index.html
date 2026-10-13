@@ -37,8 +37,10 @@
     />
     <meta name="twitter:image" content="https://www.albertovaldesrey.com/assets/images/og-image.jpg" />
 
-    <link rel="icon" href="assets/logos/favicon.ico" />
-    <link rel="apple-touch-icon" href="assets/logos/logo.png" />
+    <link rel="icon" href="assets/logos/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="assets/logos/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/logos/apple-touch-icon.png" />
+    <link rel="manifest" href="assets/logos/site.webmanifest" />
     <link rel="preload" as="image" href="assets/images/about/profile.webp" />
 
     <!-- Structured data -->
@@ -116,6 +118,21 @@
     <link rel="stylesheet" href="css/main.css" />
   </head>
   <body>
+    <!-- Translucent top bar, appears once the hero header scrolls away -->
+    <nav class="topbar" id="topbar" aria-label="Sections">
+      <a class="topbar-brand" href="#home">
+        <img class="topbar-mark" src="assets/logos/avr/avr-symbol-small.svg" alt="" width="28" height="28" />
+        <span>Alberto <em>Valdés</em> Rey</span>
+      </a>
+      <ul class="topbar-links">
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#work">EXPERIENCE</a></li>
+        <li><a href="#projects">PROJECTS</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+      <a href="mailto:alberto.valdes.rey.official@gmail.com" class="btn-outline">GET IN TOUCH</a>
+    </nav>
+
     <!-- ===== HERO ===== -->
     <section id="home" class="hero">
       <div class="hero-bg" id="heroBg"></div>
@@ -741,5 +758,6 @@
 
     <script src="js/hero.js"></script>
     <script src="js/reveal.js"></script>
+    <script src="js/nav.js"></script>
   </body>
 </html>

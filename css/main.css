@@ -95,9 +95,11 @@ img {
   -webkit-user-select: none;
   transition: background 0.2s, color 0.2s, transform 0.3s var(--spring);
 }
-.btn-outline:hover {
-  background: var(--text);
-  color: var(--bg);
+@media (hover: hover) and (pointer: fine) {
+  .btn-outline:hover {
+    background: var(--text);
+    color: var(--bg);
+  }
 }
 /* Feedback on press, not on release, and instant. */
 .btn-outline:active {
@@ -584,7 +586,9 @@ img {
 }
 
 /* =====================================================================
-   PROJECTS
+   PROJECTS,  editorial index. Each row is a disclosure button that opens
+   in place (screenshot + description + link). With a precise pointer a
+   tilted preview also follows the cursor (js/projects.js).
    ===================================================================== */
 
 .projects {
@@ -592,128 +596,254 @@ img {
   background: var(--bg-alt);
 }
 .projects .wrap {
+  position: relative;
   padding-top: 110px;
   padding-bottom: 120px;
 }
 
-.proj-list {
-  display: flex;
-  flex-direction: column;
-  gap: 96px;
-  margin-top: 72px;
+.pindex {
+  list-style: none;
+  margin-top: 64px;
+  border-top: 1px solid var(--line-strong);
+}
+.pi {
+  border-bottom: 1px solid var(--line-strong);
+}
+.pi-h {
+  margin: 0;
+  font: inherit;
 }
 
-.proj-row {
+.pi-head {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
+  grid-template-columns: 56px minmax(0, 1fr) 230px 250px 28px;
+  align-items: baseline;
+  gap: 20px;
+  width: 100%;
+  min-height: 44px;
+  padding: 22px 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
 }
-.proj-row.reverse .proj-frame {
-  order: 2;
+.pi-head:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 
-.proj-frame {
+.pi-num {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: rgba(233, 231, 226, 0.4);
+  font-variant-numeric: tabular-nums;
+}
+.pi-name {
+  font-family: var(--serif);
+  font-size: clamp(38px, 4.6vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.005em;
+  color: var(--text-bright);
+  transition: color 0.25s ease, opacity 0.25s ease, transform 0.5s var(--spring);
+}
+.pi-cat {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgba(233, 231, 226, 0.55);
+}
+.pi-tags {
+  font-size: 12.5px;
+  letter-spacing: 0.03em;
+  color: rgba(233, 231, 226, 0.45);
+}
+.pi-thumb {
+  display: none; /* shown only where there is no hover (phones, tablets) */
+}
+
+/* Plus that turns into a cross when the row is open */
+.pi-icon {
+  position: relative;
+  justify-self: end;
+  width: 14px;
+  height: 14px;
+  align-self: center;
+}
+.pi-icon::before,
+.pi-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 14px;
+  height: 2px;
+  background: var(--text-bright);
+  transition: transform 0.45s var(--spring);
+}
+.pi-icon::after {
+  transform: rotate(90deg);
+}
+.pi-head[aria-expanded="true"] .pi-icon::before {
+  transform: rotate(45deg);
+}
+.pi-head[aria-expanded="true"] .pi-icon::after {
+  transform: rotate(135deg);
+}
+
+/* Press feedback on touch-down, every input type */
+.pi-head:active .pi-name {
+  transform: translateX(6px);
+  transition-duration: 0.12s;
+}
+
+.pi-head[aria-expanded="true"] .pi-name {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* ---- Disclosure body: grid-rows 0fr → 1fr animates the real height ---- */
+.pi-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.55s var(--spring);
+}
+.pi.is-open .pi-body {
+  grid-template-rows: 1fr;
+}
+.pi-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+.pi-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+  padding: 4px 0 40px 76px;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.3s ease, transform 0.5s var(--spring);
+}
+.pi.is-open .pi-content {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.08s;
+}
+
+.pi-shot {
   display: block;
-  border-radius: 6px;
+  border-radius: 8px;
   overflow: hidden;
   border: 1px solid var(--line-strong);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
-  transition: transform 0.6s var(--spring);
-  text-decoration: none;
-  touch-action: manipulation;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
 }
-.proj-frame:hover {
-  transform: translateY(-6px) rotate(-0.4deg);
-}
-.proj-frame:active {
-  transform: translateY(-2px) scale(0.98);
-  transition: transform 0.12s ease-out;
-}
-
-.proj-frame--laptop {
-  position: relative;
-  border: none;
-  border-radius: 0;
-  overflow: visible;
-  box-shadow: none;
-}
-.proj-frame--laptop:hover {
-  transform: translateY(-6px);
-}
-.proj-frame--laptop:active,
-.proj-frame--phone:active {
-  transform: translateY(-2px) scale(0.98);
-}
-
-.laptop-frame {
+.pi-shot img {
   display: block;
   width: 100%;
-  height: auto;
-  pointer-events: none;
-  user-select: none;
-}
-
-.proj-frame--laptop .proj-img {
-  position: absolute;
-  left: 10.25%;
-  top: 5.5%;
-  width: 79.5%;
-  height: 83.5%;
-  aspect-ratio: auto;
-  border-radius: 2px;
-}
-
-.proj-frame--phone {
-  border: none;
-  border-radius: 0;
-  overflow: visible;
-  box-shadow: none;
-  width: 100%;
-  max-width: 300px;
-  margin: 0 auto;
-}
-.proj-frame--phone:hover {
-  transform: translateY(-6px);
-}
-
-.proj-frame--phone .proj-img {
-  aspect-ratio: auto;
-}
-
-.proj-img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9.5;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
   object-position: top;
 }
+.pi-shot--phone {
+  justify-self: center;
+  width: min(240px, 100%);
+  border: 0;
+  box-shadow: none;
+}
+.pi-shot--phone img {
+  aspect-ratio: auto;
+  max-height: 420px;
+  object-fit: contain;
+}
 
-.proj-info .eyebrow {
-  display: block;
-  margin-bottom: 16px;
-}
-.proj-name {
-  margin: 0 0 18px;
-  font-size: clamp(30px, 3vw, 42px);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--text-bright);
-  line-height: 1.05;
-}
-.proj-desc {
-  margin: 0 0 22px;
+.pi-desc {
+  margin: 0 0 14px;
   font-size: 15.5px;
   line-height: 1.7;
-  color: rgba(233, 231, 226, 0.68);
+  color: rgba(233, 231, 226, 0.72);
   max-width: 440px;
   text-wrap: pretty;
 }
-.proj-tag {
+.pi-tags-full {
+  margin-bottom: 26px;
   font-size: 12.5px;
   letter-spacing: 0.05em;
   color: rgba(233, 231, 226, 0.45);
-  margin-bottom: 28px;
+}
+
+/* ---- Floating preview (precise pointers only) ---- */
+.pi-float {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  /* Dim the other rows, lift the hovered one */
+  .pindex:hover .pi-head:not(:hover) .pi-name {
+    opacity: 0.35;
+  }
+  .pi-head:hover .pi-name {
+    font-style: italic;
+    color: var(--accent);
+    transform: translateX(14px);
+  }
+
+  .pi-float {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    width: 360px;
+    pointer-events: none;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    scale: 0.92;
+    rotate: -3deg;
+    transition: opacity 0.25s ease, scale 0.45s var(--spring);
+    will-change: transform;
+  }
+  .pi-float.is-on {
+    opacity: 1;
+    scale: 1;
+  }
+  .pi-float img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top;
+  }
+  .pi-float.is-phone {
+    width: 200px;
+  }
+  .pi-float.is-phone img {
+    aspect-ratio: auto;
+  }
+}
+
+/* ---- No hover (phones, tablets): show a thumbnail per row ---- */
+@media (hover: none) {
+  .pi-tags {
+    display: none; /* the thumbnail takes its column */
+  }
+  .pi-thumb {
+    display: block;
+    width: 56px;
+    height: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+    object-position: top;
+    border: 1px solid var(--line-strong);
+    align-self: center;
+  }
 }
 
 /* =====================================================================
@@ -876,16 +1006,29 @@ img {
     order: -1;
   }
 
-  .proj-list {
-    gap: 72px;
+  /* Index rows: number + name on one line, category below, icon right */
+  .pindex {
+    margin-top: 44px;
   }
-  .proj-row,
-  .proj-row.reverse {
+  .pi-head {
+    grid-template-columns: 34px minmax(0, 1fr) auto 18px;
+    grid-template-areas:
+      "num name thumb icon"
+      ".   cat  thumb icon";
+    column-gap: 14px;
+    row-gap: 6px;
+    padding: 18px 0;
+  }
+  .pi-num { grid-area: num; }
+  .pi-name { grid-area: name; font-size: clamp(30px, 8.4vw, 44px); }
+  .pi-cat { grid-area: cat; font-size: 10px; }
+  .pi-tags { display: none; }
+  .pi-thumb { grid-area: thumb; }
+  .pi-icon { grid-area: icon; }
+  .pi-content {
     grid-template-columns: 1fr;
-    gap: 28px;
-  }
-  .proj-row.reverse .proj-frame {
-    order: 0;
+    gap: 22px;
+    padding: 0 0 30px;
   }
 
   .contact-lead-wrap {
@@ -950,9 +1093,19 @@ img {
     transform: none;
     transition: opacity 0.2s ease;
   }
-  .proj-frame:hover,
-  .proj-frame:active {
+  .pi-body,
+  .pi-content,
+  .pi-name,
+  .pi-icon::before,
+  .pi-icon::after {
+    transition-duration: 0.01s;
+  }
+  .pi-content {
     transform: none;
+  }
+  .pi-float {
+    transition: opacity 0.2s ease;
+    scale: 1;
   }
 }
 

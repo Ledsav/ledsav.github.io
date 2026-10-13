@@ -37,12 +37,10 @@
     mark(el, "", i * 0.08);
   });
 
-  // Projects, image and text converge from opposite sides (mirrored on
-  // the alternating "reverse" rows).
-  qa(".proj-row").forEach(function (row) {
-    var rev = row.classList.contains("reverse");
-    mark(row.querySelector(".proj-frame"), rev ? "from-right" : "from-left", 0);
-    mark(row.querySelector(".proj-info"), rev ? "from-left" : "from-right", 0.08);
+  // Projects index rows cascade like the experience rows (short stagger,
+  // capped so long lists don't wait).
+  qa(".pi").forEach(function (el, i) {
+    mark(el, "", Math.min(i, 5) * 0.05);
   });
 
   // Contact, lead fades up, the giant CTA scales in, footer follows.

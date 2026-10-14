@@ -1263,3 +1263,54 @@ img {
     bottom: 12px;
   }
 }
+
+/* =====================================================================
+   404,  reuses the hero shell (gradient, noise, top/bottom rows).
+   ===================================================================== */
+
+.notfound .hero-center {
+  gap: 0;
+}
+.notfound .hero-center > .italic {
+  margin-top: -0.06em;
+  animation: avr-rise 1.2s var(--spring) 0.5s both;
+}
+.notfound .hero-name .italic {
+  font-style: italic;
+}
+
+.notfound-code {
+  margin-bottom: 18px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(233, 231, 226, 0.55);
+  animation: avr-rise 1.1s var(--spring) 0.25s both;
+}
+
+.notfound-text {
+  max-width: 360px;
+  margin: 28px 0 30px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(233, 231, 226, 0.65);
+  animation: avr-rise 1.1s var(--spring) 0.65s both;
+}
+
+.notfound-actions {
+  animation: avr-rise 1.1s var(--spring) 0.75s both;
+}
+
+@media (max-width: 600px) {
+  .notfound .topbar-brand {
+    font-size: 19px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notfound .hero-center > *,
+  .notfound .hero-center > .italic {
+    animation: none;
+  }
+}

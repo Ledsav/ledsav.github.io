@@ -1,5 +1,11 @@
 {
-  "name": "Alberto Vald\u00e9s Rey",
+  "id": "/",
+  "name": "Alberto Valdés Rey",
+  "short_name": "Alberto VR",
+  "description": "Portfolio of Alberto Valdés Rey, Full Stack Developer & Biomedical Engineer.",
+  "start_url": "/",
+  "scope": "/",
+  "lang": "en",
   "icons": [
     {
       "src": "icon-192.png",

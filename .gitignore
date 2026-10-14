@@ -7,9 +7,11 @@
 node_modules/
 
 # Operating System
-.DS_Store  # macOS
-Thumbs.db  # Windows
-Desktop.ini # Windows
+# macOS
+.DS_Store
+# Windows
+Thumbs.db
+Desktop.ini
 
 # Distribution / build
 /dist
@@ -42,11 +44,12 @@ temp
 *.bak
 *.swp
 *.swo
-*~ 
+*~
 
 # Other
-.env  # Environment configurations
-.env.local 
+# Environment configurations
+.env
+.env.local
 .env.*.local
 
 # Depending on your project, you might want to ignore other directories/files.

@@ -1265,11 +1265,13 @@ img {
 }
 
 /* =====================================================================
-   404,  reuses the hero shell (gradient, noise, top/bottom rows).
+   404,  reuses the hero shell (gradient, noise, top row).
    ===================================================================== */
 
+/* No bottom row here, so pad the bottom to match the top row and keep
+   the headline optically centered in the viewport. */
 .notfound .hero-center {
-  gap: 0;
+  padding-bottom: 84px;
 }
 .notfound .hero-center > .italic {
   margin-top: -0.06em;
@@ -1289,16 +1291,8 @@ img {
   animation: avr-rise 1.1s var(--spring) 0.25s both;
 }
 
-.notfound-text {
-  max-width: 360px;
-  margin: 28px 0 30px;
-  font-size: 14px;
-  line-height: 1.65;
-  color: rgba(233, 231, 226, 0.65);
-  animation: avr-rise 1.1s var(--spring) 0.65s both;
-}
-
 .notfound-actions {
+  margin-top: 44px;
   animation: avr-rise 1.1s var(--spring) 0.75s both;
 }
 

@@ -1,0 +1,46 @@
+<!doctype html>
+<!-- ledsav_dev YouTube banner source. Render at 2560x1440:
+     chrome --headless=new --window-size=2560,1440 --screenshot=youtube-banner.png banner.html
+     Everything important sits inside YouTube's 1546x423 safe area (centred).
+     Add ?guides to the URL to draw the device crop guides. -->
+<html lang="en"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600&family=Instrument+Serif:ital@0;1&display=block" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:2560px;height:1440px;overflow:hidden;background:#0e0f11}
+  .stage{position:relative;width:2560px;height:1440px;overflow:hidden;
+    background:
+      radial-gradient(1700px 560px at 50% 1060px,#ff9e00 0%,#ff6d00 13%,#c1440e 30%,#7a1500 50%,#3d0c02 72%,rgba(14,15,17,0) 100%),
+      radial-gradient(2800px 820px at 50% 1500px,#c1440e 0%,#7a1500 34%,#3d0c02 62%,rgba(14,15,17,0) 100%),
+      #0e0f11}
+  .noise{position:absolute;inset:0;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+  /* YouTube safe area: 1546x423, centred */
+  .safe{position:absolute;left:507px;top:508.5px;width:1546px;height:423px;display:flex;align-items:center;justify-content:center;gap:64px}
+  .mark{width:250px;height:250px;flex:none}
+  .text{display:flex;flex-direction:column;gap:22px}
+  .name{font-family:"Instrument Serif",serif;font-size:184px;line-height:.9;color:#f0eee9;letter-spacing:-.01em;white-space:nowrap}
+  .name i{font-style:italic;color:#ff5c33}
+  .tag{font-family:Archivo,sans-serif;font-weight:600;font-size:25px;letter-spacing:.24em;color:rgba(240,238,233,.72);white-space:nowrap}
+  .tag b{color:#ff5c33;font-weight:600}
+  .sub{font-family:"Instrument Serif",serif;font-style:italic;font-size:38px;color:rgba(240,238,233,.62)}
+  /* crop guides (only with ?guides) */
+  .g{position:absolute;border:3px dashed #39f;pointer-events:none;display:none}
+  .guides .g{display:block}
+  .g span{position:absolute;left:8px;top:4px;font:600 22px Archivo;color:#39f}
+</style></head><body>
+<div class="stage" id="stage">
+  <div class="noise"></div>
+  <div class="safe">
+    <img class="mark" src="../../../assets/logos/avr/avr-symbol-dark.svg" alt="">
+    <div class="text">
+      <div class="name">ledsav<i>_dev</i></div>
+      <div class="tag">COOL AI TOOLS <b>·</b> DEV TOOLS <b>·</b> VS CODE EXTENSIONS <b>·</b> BUILDS</div>
+      <div class="sub">Code at the edge of human biology.</div>
+    </div>
+  </div>
+  <div class="g" style="left:0;top:0;width:2560px;height:1440px"><span>TV 2560×1440</span></div>
+  <div class="g" style="left:0;top:508.5px;width:2560px;height:423px"><span>Desktop max 2560×423</span></div>
+  <div class="g" style="left:507px;top:508.5px;width:1546px;height:423px"><span>Safe area 1546×423 (all devices)</span></div>
+</div>
+<script>if (/guides/.test(location.search)) document.getElementById("stage").classList.add("guides");</script>
+</body></html>

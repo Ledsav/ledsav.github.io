@@ -1,0 +1,15 @@
+<!doctype html>
+<!-- ledsav_dev YouTube video watermark. Render (transparent background):
+     chrome --headless=new --default-background-color=00000000 --window-size=600,600 --screenshot=youtube-watermark.png watermark.html
+     ?mono renders the white one-colour version. -->
+<html><head><meta charset="utf-8"><style>
+  html,body{margin:0;width:600px;height:600px;background:transparent;overflow:hidden}
+  .tile{position:absolute;inset:24px;border-radius:124px;background:#0e0f11;
+        box-shadow:inset 0 0 0 3px rgba(240,238,233,.14);display:grid;place-items:center}
+  .tile img{width:70%;height:70%}
+  .mono .tile{background:none;box-shadow:none}
+  .mono .tile img{width:88%;height:88%}
+</style></head><body>
+<div class="tile"><img id="m" src="../../../assets/logos/avr/avr-symbol-small.svg" alt=""></div>
+<script>if(/mono/.test(location.search)){document.body.className="mono";document.getElementById("m").src="../../../assets/logos/avr/avr-symbol-white.svg";}</script>
+</body></html>

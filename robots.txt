@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.albertovaldesrey.com/sitemap.xml
+Sitemap: https://www.albertovaldesrey.com/track-lab/sitemap.xml

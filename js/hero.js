@@ -12,7 +12,9 @@
   var BG = [14, 15, 17];
   var INK = [233, 231, 226];
   var ACCENT = [255, 92, 51];
-  var ACROSS = 460; // pixels across the hero on landscape screens
+  // data-across / data-src on the canvas let the design/social renders
+  // (OG image) reuse this file with coarser pixels and their own image path.
+  var ACROSS = +canvas.dataset.across || 460; // pixels across the hero on landscape screens
   var ACROSS_PORTRAIT = 276; // phones: fewer, larger pixels so it still reads as a bitmap
   var SCAN_PERIOD = 4; // seconds: 3 s sweep, then 1 s with no line
   var SCAN_SWEEP = 0.75;
@@ -238,5 +240,5 @@
       else window.addEventListener("resize", rebuild);
     });
   };
-  img.src = "assets/images/about/profile.webp";
+  img.src = canvas.dataset.src || "assets/images/about/profile.webp";
 })();

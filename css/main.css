@@ -287,73 +287,6 @@ img {
   background: var(--bg);
 }
 
-/* Registered so the gradient size can animate on the compositor
-   (no per-frame JS = no DevTools style-attribute thrash). */
-@property --gw {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 125%;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  /* Colors are CSS vars so the dev panel can recolor without touching JS per frame. */
-  --c1: #0a0a0a;
-  --c2: #3d0c02;
-  --c3: #7a1500;
-  --c4: #c1440e;
-  --c5: #ff6d00;
-  --c6: #ff9e00;
-  --c7: #ffd23f;
-  --gw: 125%;
-  background: radial-gradient(
-    var(--gw) var(--gw) at 50% 20%,
-    var(--c1) 35%,
-    var(--c2) 50%,
-    var(--c3) 60%,
-    var(--c4) 70%,
-    var(--c5) 80%,
-    var(--c6) 90%,
-    var(--c7) 100%
-  );
-  animation: avr-enter 2s cubic-bezier(0.25, 0.1, 0.25, 1) both,
-    avr-breathe 8s ease-in-out infinite alternate;
-}
-@keyframes avr-enter {
-  from {
-    opacity: 0;
-    transform: scale(1.5);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-@keyframes avr-breathe {
-  from {
-    --gw: 120%;
-  }
-  to {
-    --gw: 130%;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-bg {
-    animation: none;
-    --gw: 125%;
-  }
-}
-
-.hero-noise {
-  position: absolute;
-  inset: 0;
-  opacity: 0.5;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
 .hero-top {
   position: relative;
   display: flex;
@@ -1282,7 +1215,7 @@ img {
 }
 
 /* =====================================================================
-   404,  reuses the hero shell (gradient, noise, top row).
+   404,  reuses the hero shell (top row, centred headline).
    ===================================================================== */
 
 /* No bottom row here, so pad the bottom to match the top row and keep
@@ -1303,7 +1236,7 @@ img {
   font-weight: 900;
   letter-spacing: var(--track-dots);
   text-transform: uppercase;
-  color: var(--text-3);
+  color: var(--accent);
   animation: avr-rise 1.1s var(--spring) 0.25s both;
 }
 

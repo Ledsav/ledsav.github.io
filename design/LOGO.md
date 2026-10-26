@@ -1,7 +1,7 @@
 # Logo — Nest
 
 A cube with its front corner opened and a sphere held inside: **life held by technology**.
-It evolves the previous notched-cube mark; the ember sphere echoes the hero gradient.
+It evolves the previous notched-cube mark; the ember sphere is the site's one orange accent.
 
 All files live in `assets/logos/` (web icons) and `assets/logos/avr/` (SVG masters).
 Every master is pure vector: no live text, no rasters, no filters.
@@ -51,3 +51,6 @@ The three-tone shading is what makes the mark read as 3D. When only one colour i
 - Wordmark outlined from **Instrument Serif** (SIL Open Font License, logo use permitted). Default spacing,
   no kerning pairs applied; tighten by hand if it is ever printed very large.
 - A trademark search was not done. Run one before registering the mark.
+- Open question: the site now sets the name in Archivo extra-condensed (top bar, hero, link preview;
+  see `STYLE.MD`), while the outlined lockups (`avr-horizontal-*`, `avr-stacked-*`) still use this
+  Instrument Serif wordmark. The symbol alone is unaffected. Decide whether to redraw the lockups.

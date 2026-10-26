@@ -1162,7 +1162,7 @@ img {
 }
 
 /* Portrait screens (phones, upright tablets): name on top, the bitmap
-   portrait fills the space below it, tags and barcode sit at its foot. */
+   portrait fills the space below it, the barcode sits at its foot. */
 @media (orientation: portrait) {
   .hero-main {
     justify-content: flex-start;
@@ -1172,9 +1172,9 @@ img {
   .hero-title {
     font-size: min(19vw, 9svh);
   }
+  /* Tags are desktop-only; on phones the barcode alone sits at the foot. */
   .hero-tags {
-    order: 1;
-    margin-top: auto;
+    display: none;
   }
   .hero-barcode {
     top: auto;

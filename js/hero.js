@@ -140,8 +140,9 @@
     // height and 18%..82% of its width.
     var size, cx, cy;
     if (portrait) {
-      var tags = hero.querySelector(".hero-tags");
-      var floor = tags ? main.offsetTop + tags.offsetTop - 8 : H * 0.85;
+      // The portrait fills the space down to the barcode at the foot.
+      var code = hero.querySelector(".hero-barcode");
+      var floor = code && code.offsetParent ? main.offsetTop + code.offsetTop - 8 : H * 0.85;
       size = Math.min((floor - tBottom) / 0.78, W * 1.3);
       cx = W / 2;
       cy = tBottom - 0.12 * size + size / 2;

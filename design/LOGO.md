@@ -44,13 +44,14 @@ The three-tone shading is what makes the mark read as 3D. When only one colour i
 - Recolour individual faces or swap the light direction (light always comes from the top).
 - Use `avr-symbol-light.svg` on dark backgrounds or `avr-symbol-dark.svg` on light ones.
 - Add gradients, glows, outlines or drop shadows; stretch, rotate or skew the cube.
-- Retype the name in another font. The wordmark is Instrument Serif with *Valdés* in italic, already outlined.
+- Retype the name in another font or setting. The wordmark is outlined Archivo, already kerned.
 
 ## Notes
 
-- Wordmark outlined from **Instrument Serif** (SIL Open Font License, logo use permitted). Default spacing,
-  no kerning pairs applied; tighten by hand if it is ever printed very large.
+- Wordmark: **ALBERTO VALDÉS REY** outlined from **Archivo** (SIL Open Font License, logo use permitted)
+  at the site's display setting: width 62.5 (extra-condensed), weight 900, uppercase, +0.01em tracking,
+  the font's own kerning pairs applied. Horizontal: cap height 84 of the 256 symbol box, cap block centred
+  on the cube, starting 78 units after it. Stacked: cap height 56, one line, 60 units below the cube.
+- The horizontal lockup is extra-wide (about 5:1); below ~300 px wide use the stacked lockup or the
+  symbol alone.
 - A trademark search was not done. Run one before registering the mark.
-- Open question: the site now sets the name in Archivo extra-condensed (top bar, hero, link preview;
-  see `STYLE.MD`), while the outlined lockups (`avr-horizontal-*`, `avr-stacked-*`) still use this
-  Instrument Serif wordmark. The symbol alone is unaffected. Decide whether to redraw the lockups.

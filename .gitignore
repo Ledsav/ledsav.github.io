@@ -57,3 +57,9 @@ temp
 
 #repomix
 repomix-output.
+
+#Reference folder
+reference/
+
+#Brainstorm mockups (visual companion)
+.superpowers/

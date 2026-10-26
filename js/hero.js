@@ -1,146 +1,242 @@
-/* Hero background is animated entirely in CSS (breathing via an @property
-   custom prop + a scale-in entrance), no per-frame JS, so nothing thrashes
-   the inline style attribute. JS here only handles:
-     1. a subtle, idle-stopping mouse parallax on the name block, and
-     2. the dev-only color panel (edits CSS color vars, not per frame). */
+/* Hero bitmap portrait. The profile image is dithered into off-white pixels
+   on a canvas (Atkinson error diffusion), with the peach backdrop removed so
+   only the head remains. An orange scan line sweeps hair to chin, pauses,
+   and repeats, redrawn at 10 fps and only while the hero is on screen.
+   With reduced motion the line rests across the eyes and nothing animates. */
 (function () {
-  var el = document.getElementById("heroBg");
-  if (!el) return;
+  var canvas = document.getElementById("heroCanvas");
+  var hero = document.getElementById("home");
+  var title = document.getElementById("heroTitle");
+  if (!canvas || !hero || !title || !canvas.getContext) return;
 
-  var PRESETS = {
-    Ember: ["#0A0A0A", "#3D0C02", "#7A1500", "#C1440E", "#FF6D00", "#FF9E00", "#FFD23F"],
-    Spectrum: ["#0A0A0A", "#2979FF", "#FF80AB", "#FF6D00", "#FFD600", "#00E676", "#3D5AFE"],
-    Sunset: ["#0A0A0A", "#4A1D6A", "#B5179E", "#F72585", "#FF6D00", "#FFB703", "#FFD166"],
-    Ocean: ["#05070A", "#023E58", "#0077B6", "#00B4D8", "#48CAE4", "#90E0EF", "#CAF0F8"],
-  };
-  var DEFAULTS = PRESETS.Ember;
-
-  function applyColors(cols) {
-    for (var i = 0; i < cols.length; i++) {
-      el.style.setProperty("--c" + (i + 1), cols[i]);
-    }
-  }
+  var BG = [14, 15, 17];
+  var INK = [233, 231, 226];
+  var ACCENT = [255, 92, 51];
+  var ACROSS = 460; // pixels across the hero on landscape screens
+  var ACROSS_PORTRAIT = 276; // phones: fewer, larger pixels so it still reads as a bitmap
+  var SCAN_PERIOD = 4; // seconds: 3 s sweep, then 1 s with no line
+  var SCAN_SWEEP = 0.75;
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var portraitMq = window.matchMedia("(orientation: portrait)");
+  var ctx = canvas.getContext("2d");
+  var img = new Image();
+  var st = null;
 
-  /* ---- Subtle mouse parallax on the name block (idle-stopping) --------- */
-  if (!reduce && window.matchMedia("(pointer: fine)").matches) {
-    var hero = document.getElementById("home");
-    var center = document.querySelector(".hero-center");
-    if (hero && center) {
-      var tx = 0, ty = 0, cx = 0, cy = 0;
-      var lastX = null, lastY = null, running = false;
+  // Deterministic noise, so pixels don't shimmer between rebuilds.
+  function hash(x, y) {
+    var h = (x * 374761393 + y * 668265263 + 2 * 982451653) | 0;
+    h = Math.imul(h ^ (h >>> 13), 1274126177);
+    return ((h ^ (h >>> 16)) >>> 0) / 4294967295;
+  }
 
-      function loop() {
-        cx += (tx - cx) * 0.06;
-        cy += (ty - cy) * 0.06;
-        var nx = +cx.toFixed(2), ny = +cy.toFixed(2);
-        if (nx !== lastX || ny !== lastY) {
-          center.style.transform = "translate(" + nx + "px," + ny + "px)";
-          lastX = nx;
-          lastY = ny;
+  function boxBlur(a, cols, rows, r) {
+    var t = new Float32Array(a.length), o = new Float32Array(a.length);
+    var x, y, k, s, c;
+    for (y = 0; y < rows; y++) {
+      for (x = 0; x < cols; x++) {
+        s = 0; c = 0;
+        for (k = -r; k <= r; k++) {
+          if (x + k >= 0 && x + k < cols) { s += a[y * cols + x + k]; c++; }
         }
-        // Stop the rAF loop once we've essentially reached the target, no
-        // idle per-frame writes. It restarts on the next mousemove.
-        if (Math.abs(tx - cx) < 0.05 && Math.abs(ty - cy) < 0.05) {
-          running = false;
-          return;
-        }
-        requestAnimationFrame(loop);
+        t[y * cols + x] = s / c;
       }
-      function kick() {
-        if (!running) {
-          running = true;
-          requestAnimationFrame(loop);
-        }
-      }
-
-      hero.addEventListener("mousemove", function (e) {
-        var r = hero.getBoundingClientRect();
-        tx = ((e.clientX - r.left) / r.width - 0.5) * 16; // ~±8px
-        ty = ((e.clientY - r.top) / r.height - 0.5) * 12; // ~±6px
-        kick();
-      });
-      hero.addEventListener("mouseleave", function () {
-        tx = 0;
-        ty = 0;
-        kick();
-      });
     }
+    for (y = 0; y < rows; y++) {
+      for (x = 0; x < cols; x++) {
+        s = 0; c = 0;
+        for (k = -r; k <= r; k++) {
+          if (y + k >= 0 && y + k < rows) { s += t[(y + k) * cols + x]; c++; }
+        }
+        o[y * cols + x] = s / c;
+      }
+    }
+    return o;
   }
 
-  /* ---- Controls (dev-only) -------------------------------------------- */
-  // Hidden for normal visitors. Add #gradient (or ?edit) to the URL to enable.
-  var devMode =
-    /gradient/.test(location.hash) || /(?:\?|&)edit\b/.test(location.search);
-  var controls = document.getElementById("gradientControls");
-  if (!devMode) {
-    if (controls) controls.remove();
-    return;
+  /* Sample the image onto the grid. The backdrop is found by flood-filling
+     peach-coloured cells from the grid border, so the teeth and eye whites
+     (enclosed by the face) are kept. */
+  function sample(cols, rows, cx, cy, size) {
+    var c = document.createElement("canvas");
+    c.width = cols;
+    c.height = rows;
+    var x = c.getContext("2d", { willReadFrequently: true });
+    x.imageSmoothingQuality = "high";
+    x.drawImage(img, cx - size / 2, cy - size / 2, size, size);
+    var d = x.getImageData(0, 0, cols, rows).data;
+    var n = cols * rows, lum = new Float32Array(n), bg = new Uint8Array(n), i;
+    for (i = 0; i < n; i++) {
+      var r = d[i * 4], g = d[i * 4 + 1], b = d[i * 4 + 2];
+      lum[i] = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+      bg[i] = d[i * 4 + 3] < 128 || (r > 200 && g > 165 && b > 145 && r - b > 10) ? 1 : 0;
+    }
+    var seen = new Uint8Array(n), stack = [], k;
+    for (k = 0; k < cols; k++) stack.push(k, (rows - 1) * cols + k);
+    for (k = 0; k < rows; k++) stack.push(k * cols, k * cols + cols - 1);
+    while (stack.length) {
+      i = stack.pop();
+      if (seen[i] || !bg[i]) continue;
+      seen[i] = 1;
+      var col = i % cols;
+      if (col > 0) stack.push(i - 1);
+      if (col < cols - 1) stack.push(i + 1);
+      if (i >= cols) stack.push(i - cols);
+      if (i < n - cols) stack.push(i + cols);
+    }
+    var mask = new Float32Array(n);
+    for (i = 0; i < n; i++) mask[i] = seen[i] ? 0 : 1;
+    return { lum: lum, mask: boxBlur(mask, cols, rows, Math.max(1, Math.round(cols / 70))) };
   }
 
-  var toggle = document.getElementById("gcToggle");
-  var panel = document.getElementById("gcPanel");
-  var swatches = document.getElementById("gcSwatches");
-  var presetsEl = document.getElementById("gcPresets");
-  var breathingEl = document.getElementById("gcBreathing");
-  var resetEl = document.getElementById("gcReset");
-  if (!toggle || !panel || !swatches) return;
+  // Atkinson dithering; bright areas become pixels. Edges of the head get
+  // extra noise so it breaks up instead of ending on a hard outline.
+  function dither(f, cols, rows) {
+    var n = cols * rows, v = new Float32Array(n), bits = new Uint8Array(n), x, y, i;
+    for (y = 0; y < rows; y++) {
+      for (x = 0; x < cols; x++) {
+        i = y * cols + x;
+        var m = f.mask[i];
+        var t = Math.pow(Math.min(1, f.lum[i] / 0.85), 0.8) * m;
+        if (m > 0.02) t += (hash(x, y) - 0.5) * (0.16 + m * (1 - m) * 2.4);
+        v[i] = t;
+      }
+    }
+    function spread(xx, yy, e) {
+      if (xx >= 0 && xx < cols && yy < rows) v[yy * cols + xx] += e;
+    }
+    for (y = 0; y < rows; y++) {
+      for (x = 0; x < cols; x++) {
+        i = y * cols + x;
+        bits[i] = v[i] > 0.5 ? 1 : 0;
+        var e = (v[i] - bits[i]) / 8;
+        spread(x + 1, y, e); spread(x + 2, y, e); spread(x - 1, y + 1, e);
+        spread(x, y + 1, e); spread(x + 1, y + 1, e); spread(x, y + 2, e);
+      }
+    }
+    return bits;
+  }
 
-  var colors = DEFAULTS.slice();
+  function build() {
+    var W = hero.clientWidth, H = hero.clientHeight;
+    if (!W || !H) return;
+    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    var portrait = portraitMq.matches;
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    // Round down a touch eagerly so 2.5px cells land on 2 device pixels.
+    var cs = Math.max(1, Math.floor((W / (portrait ? ACROSS_PORTRAIT : ACROSS)) * dpr + 0.25));
+    var cols = Math.ceil(canvas.width / cs), rows = Math.ceil(canvas.height / cs);
 
-  function renderSwatches() {
-    swatches.innerHTML = "";
-    colors.forEach(function (c, i) {
-      var wrap = document.createElement("label");
-      wrap.className = "gc-swatch";
-      wrap.style.background = c;
-      var input = document.createElement("input");
-      input.type = "color";
-      input.value = c;
-      input.addEventListener("input", function () {
-        colors[i] = input.value;
-        wrap.style.background = input.value;
-        el.style.setProperty("--c" + (i + 1), input.value);
-      });
-      wrap.appendChild(input);
-      swatches.appendChild(wrap);
+    // Layout box of the name (offsets ignore its entrance transform).
+    var main = title.offsetParent;
+    var tLeft = main.offsetLeft + title.offsetLeft;
+    var tRight = tLeft + title.offsetWidth;
+    var tBottom = main.offsetTop + title.offsetTop + title.offsetHeight;
+
+    // Placement in CSS px. The head spans roughly 12%..90% of the image
+    // height and 18%..82% of its width.
+    var size, cx, cy;
+    if (portrait) {
+      var tags = hero.querySelector(".hero-tags");
+      var floor = tags ? main.offsetTop + tags.offsetTop - 8 : H * 0.85;
+      size = Math.min((floor - tBottom) / 0.78, W * 1.3);
+      cx = W / 2;
+      cy = tBottom - 0.12 * size + size / 2;
+    } else {
+      size = Math.min(1.22, (W / H) * 0.85) * H;
+      cx = Math.max(0.7 * W, tRight + 24 + 0.32 * size);
+      cy = 0.55 * H;
+    }
+
+    // CSS px -> grid cells
+    var k = cols / W;
+    var f = sample(cols, rows, cx * k, cy * k, size * k);
+    var small = document.createElement("canvas");
+    small.width = cols;
+    small.height = rows;
+    var sctx = small.getContext("2d");
+    st = {
+      cols: cols, rows: rows, cs: cs, f: f,
+      bits: dither(f, cols, rows),
+      top: (cy - 0.38 * size) * k, // hair
+      bottom: (cy + 0.48 * size) * k, // chin and collar
+      eyes: (cy - 0.07 * size) * k,
+      band: Math.max(2, Math.round(rows * 0.035)),
+      small: small, sctx: sctx, id: sctx.createImageData(cols, rows)
+    };
+    draw(now());
+    canvas.classList.add("is-ready");
+  }
+
+  function easeInOut(p) {
+    return p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+  }
+
+  function draw(t) {
+    if (!st) return;
+    var cols = st.cols, rows = st.rows, d = st.id.data, bits = st.bits, mask = st.f.mask;
+    var line;
+    if (reduce) {
+      line = Math.round(st.eyes);
+    } else {
+      var p = (t % SCAN_PERIOD) / SCAN_PERIOD;
+      line = p < SCAN_SWEEP ? Math.round(st.top + (st.bottom - st.top) * easeInOut(p / SCAN_SWEEP)) : -999;
+    }
+    for (var y = 0; y < rows; y++) {
+      var inBand = Math.abs(y - line) <= st.band;
+      for (var x = 0; x < cols; x++) {
+        var i = y * cols + x, c = BG;
+        if (y === line && mask[i] > 0.5) c = ACCENT;
+        else if (bits[i]) c = inBand ? ACCENT : INK;
+        d[i * 4] = c[0]; d[i * 4 + 1] = c[1]; d[i * 4 + 2] = c[2]; d[i * 4 + 3] = 255;
+      }
+    }
+    st.sctx.putImageData(st.id, 0, 0);
+    ctx.imageSmoothingEnabled = false;
+    ctx.drawImage(st.small, 0, 0, cols * st.cs, rows * st.cs);
+  }
+
+  /* ---- Scan loop: 10 fps, only while the hero is visible ------------- */
+  var t0 = performance.now(), last = 0, raf = 0, visible = true;
+  function now() {
+    return (performance.now() - t0) / 1000;
+  }
+  function tick(ms) {
+    raf = 0;
+    if (!visible) return;
+    if (ms - last >= 100) {
+      last = ms;
+      draw(now());
+    }
+    raf = requestAnimationFrame(tick);
+  }
+  function kick() {
+    if (!reduce && visible && !raf) raf = requestAnimationFrame(tick);
+  }
+
+  img.onload = function () {
+    var fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+    // The name's width decides where the portrait goes, so wait for the fonts.
+    fonts.then(function () {
+      build();
+      kick();
+
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (entries) {
+          visible = entries[0].isIntersecting;
+          kick();
+        }).observe(hero);
+      }
+
+      var pending = 0;
+      var rebuild = function () {
+        clearTimeout(pending);
+        pending = setTimeout(build, 150);
+      };
+      if ("ResizeObserver" in window) new ResizeObserver(rebuild).observe(hero);
+      else window.addEventListener("resize", rebuild);
     });
-  }
-
-  Object.keys(PRESETS).forEach(function (name) {
-    var b = document.createElement("button");
-    b.type = "button";
-    b.className = "gc-preset";
-    b.title = name;
-    b.style.background =
-      "linear-gradient(90deg," + PRESETS[name].slice(1).join(",") + ")";
-    b.addEventListener("click", function () {
-      colors = PRESETS[name].slice();
-      applyColors(colors);
-      renderSwatches();
-    });
-    presetsEl.appendChild(b);
-  });
-
-  breathingEl.addEventListener("change", function () {
-    el.style.animationPlayState = breathingEl.checked ? "" : "paused";
-  });
-
-  resetEl.addEventListener("click", function () {
-    colors = DEFAULTS.slice();
-    applyColors(colors);
-    renderSwatches();
-    breathingEl.checked = true;
-    el.style.animationPlayState = "";
-  });
-
-  toggle.addEventListener("click", function () {
-    var open = panel.hasAttribute("hidden");
-    if (open) panel.removeAttribute("hidden");
-    else panel.setAttribute("hidden", "");
-    toggle.setAttribute("aria-expanded", String(open));
-  });
-
-  renderSwatches();
+  };
+  img.src = "assets/images/about/profile.webp";
 })();

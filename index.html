@@ -110,12 +110,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,100,400..600&family=Doto:wght@900&display=swap"
       rel="stylesheet"
     />
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/main.css" />
+    <!-- Source for the hero's bitmap portrait (js/hero.js) -->
+    <link rel="preload" as="image" href="assets/images/about/profile.webp" fetchpriority="high" />
   </head>
   <body>
     <!-- Translucent top bar, appears once the hero header scrolls away -->
@@ -135,11 +137,11 @@
 
     <!-- ===== HERO ===== -->
     <section id="home" class="hero">
-      <div class="hero-bg" id="heroBg"></div>
-      <div class="hero-noise"></div>
+      <!-- Bitmap portrait + scan line, drawn by js/hero.js -->
+      <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
 
       <div class="hero-top">
-        <a href="mailto:alberto.valdes.rey.official@gmail.com" class="btn-outline"
+        <a href="mailto:alberto.valdes.rey.official@gmail.com" class="btn-outline btn-accent"
           >GET IN TOUCH</a
         >
         <div class="hero-socials">
@@ -153,21 +155,22 @@
         </div>
       </div>
 
-      <h1 class="hero-center" aria-label="Alberto Valdés Rey">
-        <span class="hero-name">Alberto</span>
-        <span class="hero-name-row">
-          <span class="hero-name italic">Valdés</span>
-          <img
-            class="hero-photo"
-            src="assets/images/about/profile.webp"
-            alt="Alberto Valdés Rey"
-            width="400"
-            height="400"
-            fetchpriority="high"
-          />
-          <span class="hero-name">Rey</span>
-        </span>
-      </h1>
+      <div class="hero-main">
+        <div class="hero-tags">
+          <span>FULL STACK</span>
+          <span>BIOMEDICAL</span>
+        </div>
+        <h1 class="hero-title" id="heroTitle">
+          <span>Alberto</span>
+          <span>Valdés</span>
+          <span>Rey</span>
+        </h1>
+        <!-- "LEDSAV" in ASCII binary: one bar per bit, wide = 1 -->
+        <div class="hero-barcode" aria-hidden="true">
+          <div class="hero-bars"><i class="b0"></i><i class="b1"></i><i class="b0"></i><i class="b0"></i><i class="b1"></i><i class="b1"></i><i class="b0"></i><i class="b0"></i><i class="b0"></i><i class="b1"></i><i class="b0"></i><i class="b0"></i><i class="b0"></i><i class="b1"></i><i class="b0"></i><i class="b1"></i><i class="b0"></i><i class="b1"></i><i class="b0"></i><i class="b0"></i><i class="b0"></i><i class="b1"></i><i class="b0"></i><i class="b0"></i><i class="b0"></i><i class="b1"></i><i class="b0"></i><i class="b1"></i><i class="b0"></i><i class="b0"></i><i class="b1"></i><i class="b1"></i><i class="b0"></i><i class="b1"></i><i class="b0"></i><i class="b0"></i><i class="b0"></i><i class="b0"></i><i class="b0"></i><i class="b1"></i><i class="b0"></i><i class="b1"></i><i class="b0"></i><i class="b1"></i><i class="b0"></i><i class="b1"></i><i class="b1"></i><i class="b0"></i></div>
+          <small>LEDSAV</small>
+        </div>
+      </div>
 
       <div class="hero-bottom">
         <p class="hero-blurb left">
@@ -175,7 +178,7 @@
           <a href="https://mdsim.net/" target="_blank" rel="noopener">MDsim</a>, open
           to new opportunities.
         </p>
-        <div class="hero-scroll">SCROLL ↓</div>
+        <div class="hero-scroll"><span class="hero-scroll-dot"></span>SCROLL ↓</div>
         <p class="hero-blurb right">
           Building software at the edge of human biology and technology, from
           Luxembourg.
@@ -746,24 +749,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Live hero-gradient controls -->
-    <div class="gc" id="gradientControls">
-      <button class="gc-toggle" id="gcToggle" type="button" aria-expanded="false">
-        <span class="gc-dot"></span> Gradient
-      </button>
-      <div class="gc-panel" id="gcPanel" hidden>
-        <div class="gc-head">
-          <span>Hero gradient</span>
-          <button class="gc-reset" id="gcReset" type="button">Reset</button>
-        </div>
-        <div class="gc-swatches" id="gcSwatches"></div>
-        <label class="gc-check">
-          <input type="checkbox" id="gcBreathing" checked /> Breathing
-        </label>
-        <div class="gc-presets" id="gcPresets"></div>
-      </div>
-    </div>
 
     <script src="js/hero.js"></script>
     <script src="js/reveal.js"></script>

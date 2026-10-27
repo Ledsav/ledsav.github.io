@@ -1,48 +1,49 @@
-# Portfolio Redesign Project
+# albertovaldesrey.com
 
-## Project Status: Ready for Development
+Personal site of Alberto Valdés Rey, served by GitHub Pages at
+**https://www.albertovaldesrey.com** (this is the `Ledsav.github.io` user site). A plain
+static site: no build step, no dependencies.
 
-### Current Structure
+## Structure
+
 ```
-ledsav.github.io/
-├── REDESIGN_ROADMAP.md     # Complete implementation guide
-├── design/STYLE.MD         # Design system guidelines
-├── assets/                 # New asset structure
-│   ├── images/
-│   ├── icons/
-│   └── fonts/
-├── components/             # CSS component modules
-└── deprecated/             # Original portfolio files
-    ├── index.html
-    ├── style.css
-    ├── css/
-    ├── js/
-    ├── images/
-    ├── uploads/
-    ├── fonts/
-    └── components/
+index.html          the whole site (one page)
+404.html            not-found page
+css/main.css        all styles; design tokens live in :root
+js/                 hero.js (bitmap portrait), nav.js, projects.js, reveal.js
+assets/             icons, images, logos, 3D model
+design/             STYLE.MD (design system), LOGO.md, logo slides, social/ (YouTube banner, OG image sources)
+CNAME               custom domain for GitHub Pages
+robots.txt, sitemap.xml
+.nojekyll           serve files as-is, no Jekyll
 ```
 
-### Next Steps
-1. **Review the comprehensive roadmap** in `REDESIGN_ROADMAP.md`
-2. **Follow the 7-phase implementation plan**:
-   - Phase 1: Planning & Strategy ✅
-   - Phase 2: Information Architecture ✅
-   - Phase 3: Design System Implementation (Next)
-   - Phase 4: Content Guidelines (Next)
-   - Phase 5: Development Plan (Next)
-   - Phase 6: Testing & Optimization
-   - Phase 7: Deployment & Maintenance
+`reference/` (moodboard images) is local only and git-ignored.
 
-### Design System Reference
-- All design guidelines are documented in `design/STYLE.MD`
-- Gradient Pulse Design System provides complete styling rules
-- Color palette, typography, and component specifications included
+## Run it locally
 
-### Development Ready
-- Project structure created
-- Original files safely moved to `deprecated/` folder
-- Roadmap provides specific, actionable steps for each phase
-- Timeline estimates: 4 weeks for complete implementation
+Needs Python 3 (or any static file server).
 
-The roadmap contains detailed specifications for each phase, including code examples, performance targets, and success metrics. Follow the structured approach for optimal results.
+```bash
+git clone https://github.com/Ledsav/ledsav.github.io.git
+cd ledsav.github.io
+python -m http.server 8000
+```
+
+Then open http://localhost:8000. In VS Code the *Dev* task does the same.
+
+The design system is documented in `design/STYLE.MD`; use the tokens in `css/main.css`.
+Social assets and how to re-render them are in `design/social/README.md`.
+
+## Deploy
+
+Push to `main`. GitHub Pages publishes the repo root of `main` (*Settings → Pages →
+Deploy from a branch → main / (root)*).
+
+- **Domain:** `CNAME` holds `www.albertovaldesrey.com`; the DNS records live at the domain
+  registrar (`www` points at `ledsav.github.io`, the apex at GitHub Pages' `A` records), not
+  in this repo.
+- **Project sites:** the Projects section links to `/track-lab/` and `/tarot-web/`. Those are
+  separate repos ([track-lab](https://github.com/Ledsav/track-lab),
+  [tarot-web](https://github.com/Ledsav/tarot-web)) published as GitHub Pages project sites,
+  which inherit this custom domain.

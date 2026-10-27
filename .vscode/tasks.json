@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "setup:check-python",
+      "detail": "No dependencies to install; just checks Python is there for the local server.",
+      "type": "shell",
+      "command": "python --version",
+      "problemMatcher": []
+    },
+    {
+      "label": "Setup (fresh clone)",
+      "detail": "Static site, nothing to install. Run Dev next.",
+      "dependsOrder": "sequence",
+      "dependsOn": ["setup:check-python"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Dev",
+      "detail": "Serve the site on http://localhost:8000",
+      "type": "shell",
+      "command": "python -m http.server 8000",
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}
